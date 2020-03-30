@@ -3,6 +3,7 @@ package com.example.collectapp.authentication.view
 import android.os.Bundle
 import android.widget.EditText
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 import com.example.collectapp.R
@@ -10,9 +11,10 @@ import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
 import com.example.collectapp.authentication.presenter.AuthenticationSignInPresenter
 import com.example.collectapp.helper.BaseFragment
+import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_in.*
-import kotlinx.android.synthetic.main.fragment_sign_up.*
+import kotlinx.android.synthetic.main.fragment_sign_in.view.*
 
 class SignInView() : BaseFragment<AuthenticationModel>() {
 
@@ -20,24 +22,25 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
     var navController : NavController? = null;
     var userContactNumber : Int? = null
     var userLoginPassword : String? = null
-    var  phoneNumber : EditText? = null
-    var password : EditText? = null
+    var  phoneNumber : TextInputEditText? = null
+    var password : TextInputEditText? = null
     lateinit var signInPresenter : AuthenticationSignInPresenter
 
     override fun initView() {
-        phoneNumber  = userPhoneNumber
-        password = userPassword
-        navController = findNavController()
+        phoneNumber  = userPhoneNumber.userPhoneNumberText
+        password = userPassword.userPasswordText
+        navController = view!!.findNavController()
         loginButton.setOnClickListener {
             loginCall()
         }
-        
-        signUpButton.setOnClickListener {
+
+        SignUpNavButton.setOnClickListener {
             navController!!.navigate(R.id.action_signInView_to_signUpView)
         }
         forgotPasswordClick.setOnClickListener {
             var bundle = Bundle()
-            bundle.putInt("phone",phoneNumber!!.text.toString().toInt())
+//            bundle.putLong("phone",phoneNumber!!.text.toString().toInt())
+            bundle.putLong("phone",39728983)     // phone number is Long
             navController!!.navigate(R.id.action_signInView_to_forgotPasswordView,bundle)
         }
     }
@@ -58,11 +61,12 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
     }
 
     private fun loginCall() {
-        userContactNumber = phoneNumber!!.text.toString().toInt()
-        userLoginPassword = password!!.text.toString()
-        if (userContactNumber == null || userLoginPassword == null) {
+
+        if (phoneNumber!!.text == null || password!!.text == null) {
             this.showLong("Please Enter all details")
         } else {
+            userContactNumber = phoneNumber!!.text.toString().toInt()
+            userLoginPassword = password!!.text.toString()
             val jsonObject = JsonObject()
             jsonObject.addProperty("phone", userContactNumber)
             jsonObject.addProperty("password", userLoginPassword)

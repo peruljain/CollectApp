@@ -2,19 +2,15 @@ package com.example.collectapp.authentication.view
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.EditText
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 
 import com.example.collectapp.R
 import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
-import com.example.collectapp.authentication.presenter.AuthenticationSignInPresenter
 import com.example.collectapp.authentication.presenter.AuthenticationSignUpPresenter
 import com.example.collectapp.helper.BaseFragment
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class SignUpView : BaseFragment<AuthenticationModel>() {
@@ -42,9 +38,10 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
     }
 
     override fun initView() {
-        user_name = userName
-        user_password = userPassword
-        user_phone_number = userPhoneNumber
+        // taking care of synthetics and ids
+        user_name = userNameSignUp
+        user_password = passwordSignUp
+        user_phone_number = phoneNumberSignUp
         signUpButton.setOnClickListener {
             signUp()
         }

@@ -1,10 +1,5 @@
 package com.example.collectapp.authentication.view
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.example.collectapp.R
@@ -16,7 +11,7 @@ import com.google.gson.JsonObject
 
 
 class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
-    override val layoutId: Int = R.id.forgotpassword
+    override val layoutId: Int = R.layout.fragment_forgot_password
     lateinit var presenter : AuthenticationForgotPasswordPresenter
 
     override fun loadResponse(responseModel: AuthenticationModel) {
@@ -32,7 +27,7 @@ class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
     }
 
     override fun initView() {
-        var phone : Int? = arguments?.getInt("phone")
+        var phone = arguments?.getLong("phone")
         var jsonObject = JsonObject()
         jsonObject.addProperty("phone",phone)
         presenter = AuthenticationForgotPasswordPresenter(this, AuthenticationProvider(jsonObject))
