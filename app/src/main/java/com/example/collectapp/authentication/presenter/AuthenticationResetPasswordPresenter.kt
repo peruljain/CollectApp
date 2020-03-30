@@ -2,14 +2,14 @@ package com.example.collectapp.authentication.presenter
 
 import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
-import com.example.collectapp.authentication.view.SignInView
+import com.example.collectapp.authentication.view.ResetPasswordView
 import com.example.collectapp.helper.PresenterCallback
 
-class AuthenticationSignInPresenter(var view: SignInView, var provider : AuthenticationProvider) {
+class AuthenticationResetPasswordPresenter (var view : ResetPasswordView, val  provider : AuthenticationProvider) {
 
-    open fun getSignInResponse() {
+    open fun getResetPasswordResponse() {
         view.showProgressBar()
-        provider.getUserSignInResponse(object : PresenterCallback<AuthenticationModel> {
+        provider.getUserResetPasswordResponse(object : PresenterCallback<AuthenticationModel> {
 
             override fun onSuccess(responseModel: AuthenticationModel) {
                 view.hideProgressBar();
@@ -21,6 +21,5 @@ class AuthenticationSignInPresenter(var view: SignInView, var provider : Authent
             }
         })
     }
-
 
 }

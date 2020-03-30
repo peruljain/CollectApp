@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 
 abstract class BaseFragment<T>() : Fragment() {
 
@@ -23,12 +24,7 @@ abstract class BaseFragment<T>() : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(layoutId, container, false)
         baseActivity = (activity as BaseActivity)
-        baseActivity.swipeRefreshLayout?.setOnRefreshListener {
-            Handler().postDelayed({
-                initView();
-                baseActivity.swipeRefreshLayout?.isRefreshing = false
-            }, 3000)
-        }
+        initView();
         return fragmentView
     }
 

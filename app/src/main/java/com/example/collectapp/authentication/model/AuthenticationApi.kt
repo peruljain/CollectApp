@@ -18,6 +18,9 @@ interface AuthenticationApi {
     fun getSignUpOtpResponse(@Body jsonObject: JsonObject) : Single<AuthenticationModel>
 
     @POST(Urls.RESET_PASSWORD)
+    fun getResetPasswordResponse(@Body jsonObject: JsonObject) : Single<AuthenticationModel>
+
+    @POST(Urls.FORGOT_PASSWORD)
     fun getForgotPasswordResponse(@Body jsonObject: JsonObject) : Single<AuthenticationModel>
 
 }

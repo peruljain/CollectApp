@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signInView">
+
+    <fragment
+        android:id="@+id/signInView"
+        android:name="com.example.collectapp.authentication.view.SignInView"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInView_to_forgotPasswordView"
+            app:destination="@id/forgotPasswordView" />
+        <action
+            android:id="@+id/action_signInView_to_signUpView"
+            app:destination="@id/signUpView" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpView"
+        android:name="com.example.collectapp.authentication.view.SignUpView"
+        android:label="SignUpView" >
+        <action
+            android:id="@+id/action_signUpView_to_signUpOtpView"
+            app:destination="@id/signUpOtpView" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordView"
+        android:name="com.example.collectapp.authentication.view.ForgotPasswordView"
+        android:label="ForgotPasswordView" >
+        <action
+            android:id="@+id/action_forgotPasswordView_to_resetPasswordView"
+            app:destination="@id/resetPasswordView" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpOtpView"
+        android:name="com.example.collectapp.authentication.view.SignUpOtpView"
+        android:label="SignUpOtpView" />
+    <fragment
+        android:id="@+id/resetPasswordView"
+        android:name="com.example.collectapp.authentication.view.ResetPasswordView"
+        android:label="fragment_reset_password_view"
+        tools:layout="@layout/fragment_reset_password_view" />
+</navigation>

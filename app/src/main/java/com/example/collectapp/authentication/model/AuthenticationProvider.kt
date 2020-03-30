@@ -18,7 +18,7 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy {
                 callback.onSuccess(it)
-                callback.onFailure("Load was unsucessful");
+                callback.onFailure(it.message);
             }
     }
 
@@ -28,7 +28,7 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy {
                 callback.onSuccess(it)
-                callback.onFailure("Load was unsucessful");
+                callback.onFailure(it.message);
             }
     }
 
@@ -38,7 +38,7 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy {
                 callback.onSuccess(it)
-                callback.onFailure("Load was unsucessful");
+                callback.onFailure(it.message);
             }
     }
 
@@ -48,7 +48,17 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy {
                 callback.onSuccess(it)
-                callback.onFailure("Load was unsucessful");
+                callback.onFailure(it.message);
+            }
+    }
+
+    open fun getUserResetPasswordResponse (callback: PresenterCallback<AuthenticationModel>) {
+        ApiClient.retroClient.create(AuthenticationApi ::class.java).getForgotPasswordResponse(jsonObject)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy {
+                callback.onSuccess(it)
+                callback.onFailure(it.message);
             }
     }
 }
