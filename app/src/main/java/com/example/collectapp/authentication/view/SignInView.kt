@@ -20,7 +20,7 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
 
     override val layoutId: Int = R.layout.fragment_sign_in
     var navController : NavController? = null;
-    var userContactNumber : Int? = null
+    var userContactNumber : Long? = null
     var userLoginPassword : String? = null
     var  phoneNumber : TextInputEditText? = null
     var password : TextInputEditText? = null
@@ -33,15 +33,11 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
         loginButton.setOnClickListener {
             loginCall()
         }
-
         SignUpNavButton.setOnClickListener {
             navController!!.navigate(R.id.action_signInView_to_signUpView)
         }
         forgotPasswordClick.setOnClickListener {
-            var bundle = Bundle()
-//            bundle.putLong("phone",phoneNumber!!.text.toString().toInt())
-            bundle.putLong("phone",39728983)     // phone number is Long
-            navController!!.navigate(R.id.action_signInView_to_forgotPasswordView,bundle)
+            navController!!.navigate(R.id.action_signInView_to_forgotPasswordView)
         }
     }
 
@@ -53,9 +49,10 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
 
         if (success) {
             // move to activity
+            this.showLong(responseResponseModel.message);
         }
         else {
-            // show message
+           this.show(responseResponseModel.message)
         }
 
     }
@@ -65,7 +62,7 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
         if (phoneNumber!!.text == null || password!!.text == null) {
             this.showLong("Please Enter all details")
         } else {
-            userContactNumber = phoneNumber!!.text.toString().toInt()
+            userContactNumber = phoneNumber!!.text.toString().toLong()
             userLoginPassword = password!!.text.toString()
             val jsonObject = JsonObject()
             jsonObject.addProperty("phone", userContactNumber)

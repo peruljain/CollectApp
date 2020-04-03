@@ -4,22 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.view.SignOutFragment">
+    tools:context=".authentication.view.SignUpView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signUp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#2196F3">
+        android:background="#ffffff">
 
         <EditText
             android:id="@+id/userNameSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+            android:layout_width="222dp"
+            android:layout_height="55dp"
             android:layout_marginTop="99dp"
             android:ems="10"
+            android:hint="@string/user_name"
             android:inputType="textPersonName"
-            android:text="Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SignUpImage" />
@@ -31,7 +32,8 @@
             android:layout_marginTop="64dp"
             android:ems="10"
             android:hint="@string/phone_number"
-            android:inputType="phone"
+            android:inputType="number"
+            android:text="@string/phone_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userNameSignUp" />
@@ -44,6 +46,7 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:text="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumberSignUp" />

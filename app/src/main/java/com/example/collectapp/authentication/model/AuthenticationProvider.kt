@@ -1,18 +1,23 @@
 package com.example.collectapp.authentication.model
 
+import android.util.Log
 import com.example.collectapp.helper.ApiClient
+import com.example.collectapp.helper.BaseActivity
 import com.example.collectapp.helper.PresenterCallback
 import com.google.gson.JsonObject
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Retrofit
 
 class AuthenticationProvider(val jsonObject: JsonObject)  {
 
     // step1 call by presenter
     // step2 send data to presenter
 
+
     open fun getUserSignInResponse(callback: PresenterCallback<AuthenticationModel>) {
+
         ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignInResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -26,6 +31,7 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
         ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignUpResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnError { t-> Log.e("Error", t.message.toString()) }
             .subscribeBy {
                 callback.onSuccess(it)
                 callback.onFailure(it.message);
@@ -53,7 +59,7 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
     }
 
     open fun getUserResetPasswordResponse (callback: PresenterCallback<AuthenticationModel>) {
-        ApiClient.retroClient.create(AuthenticationApi ::class.java).getForgotPasswordResponse(jsonObject)
+        ApiClient.retroClient.create(AuthenticationApi ::class.java).getResetPasswordResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy {

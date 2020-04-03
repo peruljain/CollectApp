@@ -2,6 +2,7 @@ package com.example.collectapp.authentication.view
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 
@@ -29,8 +30,8 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
 
         if (success) {
             var bundle = Bundle()
-            bundle.putInt("phone", user_phone_number.text.toString().toInt())
-            findNavController().navigate(R.id.action_signUpView_to_signUpOtpView)
+            bundle.putLong("phone", user_phone_number.text.toString().toLong())
+            findNavController().navigate(R.id.action_signUpView_to_signUpOtpView,bundle)
         }
         else {
            this.show(responseModel.message)
@@ -54,7 +55,7 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
             this.showLong("Please enter all details")
         }
         else {
-            jsonObject.addProperty("phone", user_phone_number.text.toString().toInt())
+            jsonObject.addProperty("phone", user_phone_number.text.toString().toLong())
             jsonObject.addProperty("name", user_name.text.toString())
             jsonObject.addProperty("password", user_password.text.toString())
             signUpPresenter = AuthenticationSignUpPresenter(this, AuthenticationProvider(jsonObject))

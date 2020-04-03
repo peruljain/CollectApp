@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
-    tools:context=".authentication.view.SignUpOtpFragment">
+    tools:context=".authentication.view.SignUpOtpView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signUpOtp"
@@ -13,13 +12,14 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/otpText"
+            android:id="@+id/resetOtp"
+            style="@style/Widget.AppCompat.EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="264dp"
             android:ems="10"
-            android:inputType="number|textPersonName"
-            android:text="OTP"
+            android:hint="@string/otp"
+            android:inputType="number|text"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.439"
@@ -31,10 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="104dp"
-            android:text="Submit"
+            android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/otpText" />
+            app:layout_constraintTop_toBottomOf="@+id/resetOtp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

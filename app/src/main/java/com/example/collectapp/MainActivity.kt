@@ -20,7 +20,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     override fun initActivity() {
         //Instantiate ApiClient instance by passing context of Activity (for caching)
         //using static fun instantiate, requires proper BASE_URL to run
-//        ApiClient.instantiate(this)
+        ApiClient.instantiate(this)
         progressBar = progressBarMain
         swipeRefreshLayout = swipeRefreshLayoutMain
         navController = findNavController(R.id.fragmentHostMain)

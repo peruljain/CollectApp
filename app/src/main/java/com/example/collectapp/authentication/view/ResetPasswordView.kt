@@ -1,10 +1,5 @@
 package com.example.collectapp.authentication.view
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 
 import com.example.collectapp.R
@@ -29,6 +24,7 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>(){
 
         if (success) {
             // TODO: move to new activity
+            this.show(responseModel.message)
         }
         else {
             this.show(responseModel.message)
@@ -37,9 +33,9 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>(){
 
     override fun initView() {
 
-        otp  = otpText
-        phone = phoneNumber
-        userPassword = password
+        otp  = resetOtp
+        phone = resetphoneNumber
+        userPassword = resetPassword
         submit.setOnClickListener {
             click()
         }
@@ -47,9 +43,9 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>(){
 
     private fun click() {
         var jsonObject = JsonObject()
-        jsonObject.addProperty("phone",phone?.text.toString().toInt())
+        jsonObject.addProperty("phone",phone?.text.toString().toLong())
         jsonObject.addProperty("otp",otp?.text.toString().toInt())
-        jsonObject.addProperty("password",password?.text.toString())
+        jsonObject.addProperty("password",resetPassword?.text.toString())
         presenter = AuthenticationResetPasswordPresenter(this, AuthenticationProvider(jsonObject))
         presenter.getResetPasswordResponse()
     }

@@ -24,7 +24,6 @@ abstract class BaseFragment<T>() : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(layoutId, container, false)
         baseActivity = (activity as BaseActivity)
-//        initView();
         return fragmentView
     }
 
