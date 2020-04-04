@@ -3,13 +3,13 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/md_red_600</item>
+        <item name="colorPrimary">@color/md_green_600</item>
         <item name="colorOnPrimary">@color/md_white_1000</item>
-        <item name="colorPrimaryVariant">@color/md_red_200</item>
+        <item name="colorPrimaryVariant">@color/md_green_800</item>
 
         <item name="colorOnSecondary">@color/md_white_1000</item>
-        <item name="colorSecondaryVariant">@color/md_red_400</item>
-        <item name="colorSecondary">@color/md_red_600</item>
+        <item name="colorSecondaryVariant">@color/md_blue_grey_800</item>
+        <item name="colorSecondary">@color/md_blue_grey_600</item>
 
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

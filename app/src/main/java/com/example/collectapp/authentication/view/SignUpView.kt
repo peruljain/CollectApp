@@ -13,6 +13,7 @@ import com.example.collectapp.authentication.presenter.AuthenticationSignUpPrese
 import com.example.collectapp.helper.BaseFragment
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import kotlinx.android.synthetic.main.fragment_sign_up.view.*
 
 class SignUpView : BaseFragment<AuthenticationModel>() {
 
@@ -40,9 +41,9 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
 
     override fun initView() {
         // taking care of synthetics and ids
-        user_name = userNameSignUp
-        user_password = passwordSignUp
-        user_phone_number = phoneNumberSignUp
+        user_name = userNameSignUp.userNameSignUpText
+        user_password = passwordSignUp.passwordSignUpText
+        user_phone_number = phoneNumberSignUp.phoneNumberSignUpText
         signUpButton.setOnClickListener {
             signUp()
         }

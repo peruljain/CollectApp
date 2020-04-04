@@ -11,6 +11,7 @@ import com.example.collectapp.authentication.presenter.AuthenticationForgotPassw
 import com.example.collectapp.helper.BaseFragment
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_forgot_password.*
+import kotlinx.android.synthetic.main.fragment_forgot_password.view.*
 
 
 class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
@@ -32,7 +33,7 @@ class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
     }
 
     override fun initView() {
-        phoneNumber = forgotPhoneNumber
+        phoneNumber = forgotPhoneNumber.forgotPhoneNumberText
         submitButton = forgotSubmit
         submitButton.setOnClickListener {
             submit();
