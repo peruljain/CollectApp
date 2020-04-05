@@ -1,10 +1,7 @@
 package com.example.collectapp.authentication.view
 
-import android.os.Bundle
-import android.widget.EditText
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 
 import com.example.collectapp.R
 import com.example.collectapp.authentication.model.AuthenticationModel
@@ -20,10 +17,10 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
 
     override val layoutId: Int = R.layout.fragment_sign_in
     var navController : NavController? = null;
-    var userContactNumber : Long? = null
+    var userContactNumber : String? = null
     var userLoginPassword : String? = null
-    var  phoneNumber : TextInputEditText? = null
-    var password : TextInputEditText? = null
+    lateinit var  phoneNumber : TextInputEditText
+    lateinit var password : TextInputEditText
     lateinit var signInPresenter : AuthenticationSignInPresenter
 
     override fun initView() {
@@ -59,10 +56,14 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
 
     private fun loginCall() {
 
-        if (phoneNumber!!.text == null || password!!.text == null) {
+        if (this.check(phoneNumber.text.toString()) || this.check(password.text.toString())) {
             this.showLong("Please Enter all details")
-        } else {
-            userContactNumber = phoneNumber!!.text.toString().toLong()
+        }
+        else if (this.checkPhone(phoneNumber.text.toString())){
+            this.showLong("Please Enter Correct Phone Number")
+        }
+        else {
+            userContactNumber = phoneNumber!!.text.toString()
             userLoginPassword = password!!.text.toString()
             val jsonObject = JsonObject()
             jsonObject.addProperty("phone", userContactNumber)

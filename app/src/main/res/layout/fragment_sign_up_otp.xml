@@ -9,32 +9,85 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signUpOtp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/md_blue_grey_600"
+        android:padding="@dimen/layout_padding">
 
-        <EditText
-            android:id="@+id/resetOtp"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="wrap_content"
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView1"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="264dp"
-            android:ems="10"
-            android:hint="@string/otp"
-            android:inputType="number|text"
-            android:textColorHint="#FFFFFF"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:padding="@dimen/element_padding"
+            android:text="@string/otp_verification"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"
+            app:layout_constraintBottom_toTopOf="@+id/materialTextView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.439"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView2"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato"
+            android:layout_marginLeft="8dp"
+            android:padding="@dimen/element_padding"
+            android:text="@string/check_otp_on_your_mobile_number"
+            android:textColor="@color/md_white_1000"
+            app:layout_constraintBottom_toTopOf="@+id/submitSignUpOtp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView1" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/submitSignUpOtp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="201dp"
+            android:ems="10"
+            android:hint="@string/otp"
+            android:inputType="number|text"
+            app:layout_constraintBottom_toTopOf="@+id/otpButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/submitSignUpOtpText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/otpButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="104dp"
-            android:text="@string/submit"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/submit_otp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/resetOtp" />
+            app:layout_constraintTop_toBottomOf="@+id/submitSignUpOtp" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

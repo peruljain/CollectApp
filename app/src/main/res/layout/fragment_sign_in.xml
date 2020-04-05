@@ -11,21 +11,33 @@
         android:id="@+id/loginLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/layout_padding"
-        >
+        android:padding="@dimen/layout_padding">
 
         <ImageView
             android:id="@+id/signInImage"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:src="@drawable/sign_in"
+            android:contentDescription="@string/sign_in_image"
+            android:padding="48dp"
+            android:src="@drawable/logo"
             app:layout_constraintBottom_toTopOf="@+id/userPhoneNumber"
             app:layout_constraintEnd_toEndOf="@+id/userPhoneNumber"
             app:layout_constraintStart_toStartOf="@+id/userPhoneNumber"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:padding="@dimen/element_padding"
+            android:text="@string/sign_in"
+            app:layout_constraintBottom_toBottomOf="@id/signInImage"
+            app:layout_constraintBottom_toTopOf="@id/userPhoneNumber" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/userPhoneNumber"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
@@ -39,8 +51,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userPhoneNumberText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +84,8 @@
             android:layout_height="53dp"
             android:layout_marginStart="84dp"
             android:layout_marginLeft="84dp"
-            android:text="@string/reset_password"
+            android:fontFamily="@font/lato"
+            android:text="@string/forgot_password"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toTopOf="@+id/loginButton"
             app:layout_constraintEnd_toEndOf="parent"

@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -41,6 +42,7 @@ abstract class BaseActivity(val layoutId: Int) : AppCompatActivity() {
     fun View.hide() {
         visibility = View.INVISIBLE
     }
+
 
     // check internet connection
     fun isConnected(): Boolean {

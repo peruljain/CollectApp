@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import java.util.regex.Pattern
 
 abstract class BaseFragment<T>() : Fragment() {
 
@@ -69,5 +70,15 @@ abstract class BaseFragment<T>() : Fragment() {
 
     // check internet connection
     fun isConnected(): Boolean = baseActivity.isConnected()
+
+    // check for empty text
+    fun check(message: String) : Boolean {
+        return message.trim().isNotEmpty();
+    }
+
+    fun checkPhone(message: String) : Boolean {
+        var pattern : String = "[0-9]{10}"
+        return Pattern.matches(message, pattern);
+    }
 
 }

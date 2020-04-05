@@ -3,12 +3,19 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="phone_number"> phone number </string>
-    <string name="password"> password</string>
-    <string name="reset_password">forgotpassword</string>
-    <string name="sign_up"> sign up</string>
-    <string name="sign_in"> sign in</string>
+    <string name="phone_number"> Phone Number </string>
+    <string name="password"> Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="sign_up"> Sign Up</string>
+    <string name="sign_in"> Sign In</string>
     <string name="submit"> submit </string>
-    <string name="otp">otp</string>
-    <string name="user_name">user name</string>
+    <string name="otp">Enter OTP</string>
+    <string name="user_name">Username</string>
+    <string name="submit_otp">Submit OTP</string>
+    <string name="sign_in_image">Sign In Image</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="check_otp_on_your_mobile_number">Check OTP on your Mobile Number</string>
+    <string name="forgot_password_desc">Enter your Registered Phone Number to get OTP</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="new_password">New Password</string>
 </resources>

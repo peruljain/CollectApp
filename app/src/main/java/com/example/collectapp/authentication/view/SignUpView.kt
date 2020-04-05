@@ -13,6 +13,7 @@ import com.example.collectapp.authentication.presenter.AuthenticationSignUpPrese
 import com.example.collectapp.helper.BaseFragment
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import kotlinx.android.synthetic.main.fragment_sign_up.view.*
 
 class SignUpView : BaseFragment<AuthenticationModel>() {
 
@@ -30,7 +31,7 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
 
         if (success) {
             var bundle = Bundle()
-            bundle.putLong("phone", user_phone_number.text.toString().toLong())
+            bundle.putString("phone", user_phone_number.text.toString())
             findNavController().navigate(R.id.action_signUpView_to_signUpOtpView,bundle)
         }
         else {
@@ -40,9 +41,9 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
 
     override fun initView() {
         // taking care of synthetics and ids
-        user_name = userNameSignUp
-        user_password = passwordSignUp
-        user_phone_number = phoneNumberSignUp
+        user_name = userNameSignUp.userNameSignUpText
+        user_password = passwordSignUp.passwordSignUpText
+        user_phone_number = phoneNumberSignUp.phoneNumberSignUpText
         signUpButton.setOnClickListener {
             signUp()
         }
@@ -54,14 +55,15 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
                                                     TextUtils.isEmpty(user_phone_number.text)) {
             this.showLong("Please enter all details")
         }
+        else if (this.checkPhone(user_phone_number.text.toString())){
+            this.showLong("Please Enter Correct Phone Number")
+        }
         else {
-            jsonObject.addProperty("phone", user_phone_number.text.toString().toLong())
+            jsonObject.addProperty("phone", user_phone_number.text.toString())
             jsonObject.addProperty("name", user_name.text.toString())
             jsonObject.addProperty("password", user_password.text.toString())
             signUpPresenter = AuthenticationSignUpPresenter(this, AuthenticationProvider(jsonObject))
             signUpPresenter.getSignUpResponse()
         }
     }
-
-
 }
