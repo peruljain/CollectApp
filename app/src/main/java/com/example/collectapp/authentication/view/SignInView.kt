@@ -1,5 +1,6 @@
 package com.example.collectapp.authentication.view
 
+import android.content.Intent
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 
@@ -8,6 +9,9 @@ import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
 import com.example.collectapp.authentication.presenter.AuthenticationSignInPresenter
 import com.example.collectapp.helper.BaseFragment
+import com.example.collectapp.helper.Constants
+import com.example.collectapp.helper.SharedPref
+import com.example.collectapp.sessioncreate.view.SessionListView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_in.*
@@ -46,7 +50,11 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
 
         if (success) {
             // move to activity
-            this.showLong(responseResponseModel.message);
+            this.showLong(responseResponseModel.access_token)
+            SharedPref.putString(Constants.authorization, responseResponseModel.access_token!!)
+            var intent = Intent(this.context, SessionListView::class.java)
+            startActivity(intent)
+
         }
         else {
            this.show(responseResponseModel.message)
@@ -56,7 +64,7 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
 
     private fun loginCall() {
 
-        if (this.check(phoneNumber.text.toString()) || this.check(password.text.toString())) {
+        if (!this.check(phoneNumber.text.toString()) || !this.check(password.text.toString())) {
             this.showLong("Please Enter all details")
         }
         else if (this.checkPhone(phoneNumber.text.toString())){

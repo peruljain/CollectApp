@@ -19,6 +19,8 @@ abstract class BaseActivity(val layoutId: Int) : AppCompatActivity() {
     abstract var swipeRefreshLayout: SwipeRefreshLayout?
     abstract var toolbar: Toolbar?
 
+
+
     // To initilaize in OnCreate method of activity
     abstract fun initActivity()
 

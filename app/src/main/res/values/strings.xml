@@ -18,4 +18,7 @@
     <string name="forgot_password_desc">Enter your Registered Phone Number to get OTP</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="new_password">New Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="session_name">Session Name</string>
+    <string name="session_token">Session Token</string>
 </resources>

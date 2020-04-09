@@ -42,7 +42,7 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>() {
 
     private fun click() {
 
-        if (this.check(phone?.text.toString()) || this.check(otp?.text.toString()) || this.check(userPassword?.text.toString())) {
+        if (!this.check(phone?.text.toString()) || !this.check(otp?.text.toString()) || !this.check(userPassword?.text.toString())) {
             this.show("Please Enter Correct Details");
         }
         else {

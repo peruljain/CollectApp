@@ -16,7 +16,7 @@ class AuthenticationSignInPresenter(var view: SignInView, var provider : Authent
                 view.loadResponse(responseModel);
             }
             override fun onFailure(message: String) {
-                view show message
+                view.show("Fails")
                 view.hideProgressBar()
             }
         })
