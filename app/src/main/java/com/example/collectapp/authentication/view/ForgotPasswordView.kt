@@ -8,7 +8,7 @@ import com.example.collectapp.R
 import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
 import com.example.collectapp.authentication.presenter.AuthenticationForgotPasswordPresenter
-import com.example.collectapp.helper.BaseFragment
+import com.example.collectapp.base.BaseFragment
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_forgot_password.*
 import kotlinx.android.synthetic.main.fragment_forgot_password.view.*

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
     <dimen name="text_padding">4dp</dimen>
     <dimen name="margin_8dp">8dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->

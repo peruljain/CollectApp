@@ -2,13 +2,11 @@ package com.example.collectapp.authentication.model
 
 import android.util.Log
 import com.example.collectapp.helper.ApiClient
-import com.example.collectapp.helper.BaseActivity
 import com.example.collectapp.helper.PresenterCallback
 import com.google.gson.JsonObject
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
 
 class AuthenticationProvider(val jsonObject: JsonObject)  {
 

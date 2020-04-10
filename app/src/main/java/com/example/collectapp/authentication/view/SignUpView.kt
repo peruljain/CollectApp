@@ -2,7 +2,6 @@ package com.example.collectapp.authentication.view
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 
@@ -10,7 +9,7 @@ import com.example.collectapp.R
 import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
 import com.example.collectapp.authentication.presenter.AuthenticationSignUpPresenter
-import com.example.collectapp.helper.BaseFragment
+import com.example.collectapp.base.BaseFragment
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.android.synthetic.main.fragment_sign_up.view.*

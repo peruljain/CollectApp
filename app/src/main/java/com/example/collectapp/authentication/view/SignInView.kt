@@ -8,10 +8,11 @@ import com.example.collectapp.R
 import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
 import com.example.collectapp.authentication.presenter.AuthenticationSignInPresenter
-import com.example.collectapp.helper.BaseFragment
+import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.SharedPref
-import com.example.collectapp.sessioncreate.view.SessionListView
+import com.example.collectapp.home.view.HomeActivity
+import com.example.collectapp.home.view.SessionListView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_in.*
@@ -51,9 +52,11 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
         if (success) {
             // move to activity
             this.showLong(responseResponseModel.access_token)
-            SharedPref.putString(Constants.authorization, responseResponseModel.access_token!!)
-            var intent = Intent(this.context, SessionListView::class.java)
+            SharedPref.putString(Constants.authorization, responseResponseModel.access_token)
+            SharedPref.putString(Constants.phoneNumber, arguments?.getString("phone")!!)
+            var intent = Intent(this.context, HomeActivity::class.java)
             startActivity(intent)
+            activity!!.finish()
 
         }
         else {
@@ -71,8 +74,8 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
             this.showLong("Please Enter Correct Phone Number")
         }
         else {
-            userContactNumber = phoneNumber!!.text.toString()
-            userLoginPassword = password!!.text.toString()
+            userContactNumber = phoneNumber.text.toString()
+            userLoginPassword = password.text.toString()
             val jsonObject = JsonObject()
             jsonObject.addProperty("phone", userContactNumber)
             jsonObject.addProperty("password", userLoginPassword)

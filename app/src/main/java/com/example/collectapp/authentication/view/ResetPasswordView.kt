@@ -1,11 +1,15 @@
 package com.example.collectapp.authentication.view
 
+import android.content.Intent
 import android.widget.EditText
 import com.example.collectapp.R
 import com.example.collectapp.authentication.model.AuthenticationModel
 import com.example.collectapp.authentication.model.AuthenticationProvider
 import com.example.collectapp.authentication.presenter.AuthenticationResetPasswordPresenter
-import com.example.collectapp.helper.BaseFragment
+import com.example.collectapp.base.BaseFragment
+import com.example.collectapp.helper.Constants
+import com.example.collectapp.helper.SharedPref
+import com.example.collectapp.home.view.HomeActivity
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_reset_password_view.*
 import kotlinx.android.synthetic.main.fragment_reset_password_view.view.*
@@ -25,6 +29,11 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>() {
         if (success) {
             // TODO: move to new activity
             this.show(responseModel.message)
+            SharedPref.putString(Constants.phoneNumber, arguments?.getString("phone")!!)
+            SharedPref.putString(Constants.authorization, responseModel.access_token)
+            val intent = Intent(this.context, HomeActivity::class.java)
+            startActivity(intent)
+            activity!!.finish()
         } else {
             this.show(responseModel.message)
         }
