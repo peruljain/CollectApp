@@ -37,15 +37,17 @@
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:fontFamily="@font/lato"
             android:hint="@string/user_name"
-            android:inputType="textPersonName"
+            android:fontFamily="@font/lato"
+
+            app:startIconDrawable="@drawable/ic_person"
             app:layout_constraintBottom_toTopOf="@+id/phoneNumberSignUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SignUpText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPersonName"
                 android:id="@+id/userNameSignUpText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -60,10 +62,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
+            app:startIconDrawable="@drawable/ic_phone"
             android:layout_marginRight="8dp"
             android:fontFamily="@font/lato"
             android:hint="@string/phone_number"
-            android:inputType="number"
             android:text="@string/phone_number"
             app:layout_constraintBottom_toTopOf="@+id/passwordSignUp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +73,7 @@
             app:layout_constraintTop_toBottomOf="@+id/userNameSignUp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="phone"
                 android:id="@+id/phoneNumberSignUpText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -88,14 +91,15 @@
             android:layout_marginRight="8dp"
             android:fontFamily="@font/lato"
             android:hint="@string/password"
-            android:inputType="textPassword"
-            android:text="@string/password"
+            app:startIconDrawable="@drawable/ic_key"
+            app:endIconMode="password_toggle"
             app:layout_constraintBottom_toTopOf="@+id/signUpButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumberSignUp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPassword"
                 android:id="@+id/passwordSignUpText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -108,7 +112,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:text="@string/sign_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

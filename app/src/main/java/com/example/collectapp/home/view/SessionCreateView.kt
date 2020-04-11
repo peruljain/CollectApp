@@ -11,6 +11,7 @@ import com.example.collectapp.home.provider.SessionListProvider
 import com.example.collectapp.home.provider.model.SessionCreateModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_session_create_view.*
+import kotlinx.android.synthetic.main.fragment_session_create_view.view.*
 
 
 class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
@@ -39,8 +40,8 @@ class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
 
     override fun initView() {
 
-        sessionName = sessionNameCreate
-        submit = submitSessionCreate
+//        sessionName = sessionNameCreate.sessionNameCreateText
+        submit = submitSessionCreateBtn
         cancel = cancelButtonResponse
         submit.setOnClickListener {
             submitClick()

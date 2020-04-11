@@ -21,14 +21,12 @@ class AuthActivity : BaseActivity(R.layout.activity_auth) {
 
 
     override fun initActivity() {
-        //Instantiate ApiClient instance by passing context of Activity (for caching)
-        //using static fun instantiate, requires proper BASE_URL to run
-        ApiClient.instantiate(this)
         SharedPref.instantiate(this)
         progressBar = progressBarMain
         swipeRefreshLayout = swipeRefreshLayoutMain
         navController = findNavController(R.id.fragmentHostMain)
         val accessToken:String? = SharedPref.getString(Constants.authorization)
+
         accessToken?.let{
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)

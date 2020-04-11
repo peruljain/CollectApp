@@ -43,24 +43,24 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
         }
     }
 
-    override fun loadResponse(responseResponseModel: AuthenticationModel) {
+    override fun loadResponse(responseModel: AuthenticationModel) {
         // response coming from presenter
         // reponse coming from provider to presenter
 
-        var success = responseResponseModel.success
+        val success = responseModel.success
 
         if (success) {
             // move to activity
-            this.showLong(responseResponseModel.access_token)
-            SharedPref.putString(Constants.authorization, responseResponseModel.access_token)
-            SharedPref.putString(Constants.phoneNumber, arguments?.getString("phone")!!)
-            var intent = Intent(this.context, HomeActivity::class.java)
+            this.showLong(responseModel.access_token)
+            SharedPref.putString(Constants.authorization, responseModel.access_token)
+            SharedPref.putString(Constants.phoneNumber, phoneNumber.text.toString())
+            val intent = Intent(this.context, HomeActivity::class.java)
             startActivity(intent)
             activity!!.finish()
 
         }
         else {
-           this.show(responseResponseModel.message)
+           this.show(responseModel.message)
         }
 
     }

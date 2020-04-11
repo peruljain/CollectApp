@@ -12,15 +12,13 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    lateinit var retroClient: Retrofit
+    lateinit var retroClientCache: Retrofit
+    var retroClient: Retrofit
     private const val BASE_URL = Urls.BASE_URL;
-
-
-    fun instantiate(context: Context): ApiClient {
-        val cache = Cache(context.cacheDir, 5 * 1024 * 1024)     //5 MB
+    init {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val okHttpClient = OkHttpClient.Builder().cache(cache)
+        val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(2, TimeUnit.MINUTES)
             .writeTimeout(2, TimeUnit.MINUTES) // write timeout
             .readTimeout(2, TimeUnit.MINUTES) // read timeout
@@ -30,8 +28,8 @@ object ApiClient {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient).build()
-        return this
     }
+
 
     fun instantiateWithAccessToken(context: Context, accessToken: String?) : ApiClient {
         val cache = Cache(context.cacheDir, 5 * 1024 * 1024)     //5 MB
@@ -48,11 +46,12 @@ object ApiClient {
                     val original: Request = chain.request()
                     val requestBuilder: Request.Builder = original.newBuilder()
                         .header("Authorization", "Token $accessToken")
+//                        .header("Cache-Control", "public, only-if-cached, max-stale=${60 * 60 * 24 * 30}")
                     val request: Request = requestBuilder.build()
                     return chain.proceed(request)
                 }
             }).build()
-        retroClient = Retrofit.Builder().baseUrl(BASE_URL)
+        retroClientCache = Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient).build()

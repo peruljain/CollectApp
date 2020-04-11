@@ -10,18 +10,16 @@ import com.example.collectapp.home.presenter.SessionListPresenter
 import com.example.collectapp.home.provider.SessionListProvider
 import com.example.collectapp.home.provider.model.SessionDataModel
 import com.example.collectapp.home.provider.model.SessionListModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.JsonObject
 import com.taz.cureous.mvp.BaseListFragment
 import kotlinx.android.synthetic.main.fragment_session_list.*
 
+
 class SessionListView :
     BaseListFragment<SessionListModel, SessionDataModel, SessionListAdapter>() {
 
-    lateinit var create: FloatingActionButton
-    lateinit var join: FloatingActionButton
-    lateinit var createFragment: SessionCreateView
-    lateinit var joinFragment: SessionJoinView
+    lateinit var createSessionFragment: SessionCreateView
+    lateinit var joinSessionFragment: SessionJoinView
     lateinit var presenter: SessionListPresenter
 
     override val adapter: SessionListAdapter = SessionListAdapter()
@@ -34,17 +32,15 @@ class SessionListView :
     }
 
     override fun initView() {
-        create = createSession
-        join = joinSession
-        createFragment = SessionCreateView()
-        joinFragment = SessionJoinView()
+        createSessionFragment = SessionCreateView()
+        joinSessionFragment = SessionJoinView()
         // getList
         getList()
 
-        create.setOnClickListener {
+        createSessionFAB.setOnClickListener {
             createClick()
         }
-        join.setOnClickListener {
+        joinSessionFAB.setOnClickListener {
             joinClick()
         }
 
@@ -65,16 +61,9 @@ class SessionListView :
         presenter.getSessionListResponse()
     }
 
-    private fun joinClick() {
-        joinFragment.show(parentFragmentManager, "join")
-    }
+    private fun joinClick() = joinSessionFragment.show(parentFragmentManager, "JoinSession")
 
-    private fun createClick() {
-        createFragment.show(parentFragmentManager, "create")
-    }
-
-
-
+    private fun createClick() = createSessionFragment.show(parentFragmentManager, "CreateSession")
 
 
 }

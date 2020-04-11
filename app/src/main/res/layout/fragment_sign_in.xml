@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
             android:hint="@string/phone_number"
-            android:inputType="phone"
+            app:startIconDrawable="@drawable/ic_phone"
             app:layout_constraintBottom_toTopOf="@+id/userPassword"
             app:layout_constraintEnd_toEndOf="@+id/userPassword"
             app:layout_constraintStart_toStartOf="@+id/userPassword"
@@ -50,6 +50,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userPhoneNumberText"
+                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -61,7 +62,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
             android:hint="@string/password"
-            android:inputType="textPassword"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_key"
             app:layout_constraintBottom_toTopOf="@+id/forgotPasswordClick"
             app:layout_constraintEnd_toEndOf="@+id/forgotPasswordClick"
             app:layout_constraintStart_toStartOf="@+id/forgotPasswordClick"
@@ -71,7 +73,7 @@
                 android:id="@+id/userPasswordText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:inputType="textPassword"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>

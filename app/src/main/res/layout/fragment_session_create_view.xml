@@ -1,55 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".home.view.SessionCreateView">
 
     <LinearLayout
+        android:layout_centerInParent="true"
         android:id="@+id/linearLayoutContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/layout_padding">
 
-        <EditText
-            android:id="@+id/sessionNameCreate"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/session_name"
-             />
+            android:fontFamily="@font/lato"
+            android:padding="@dimen/element_padding"
+            android:text="Create Session" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sessionNameCreate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/element_padding"
+            android:fontFamily="@font/lato"
+            android:hint="Enter Session Name"
+            app:startIconDrawable="@drawable/ic_create">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sessionNameCreateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textAutoComplete" />
+
+        </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            />
-
-
-        <RelativeLayout
-
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center_vertical">
+            android:padding="@dimen/element_padding"
+            android:gravity="end"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/submitSessionCreate"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitSessionCreateBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:text="@string/submit" />
 
-            <Button
-            android:id="@+id/cancelButtonResponse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-            android:text="@string/cancel" />
-        </RelativeLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelButtonResponse"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -13,6 +13,7 @@ import com.example.collectapp.home.presenter.SessionJoinPresenter
 import com.example.collectapp.home.provider.SessionListProvider
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_session_join_view.*
+import kotlinx.android.synthetic.main.fragment_session_join_view.view.*
 
 
 class SessionJoinView : BaseDialogFragment<GeneralModel>() {
@@ -28,17 +29,19 @@ class SessionJoinView : BaseDialogFragment<GeneralModel>() {
 
         if(responseModel.success) {
             this.show(responseModel.message)
-            var intent = Intent(this.context, SessionListView::class.java)
-            startActivity(intent)
+
+//            var intent = Intent(this.context, SessionListView::class.java)
+//            startActivity(intent)
         }
         else {
             this.show(responseModel.message)
         }
+        dismiss()
 
     }
 
     override fun initView() {
-        sessionToken = joinSessionToken
+        sessionToken = joinSessionToken.joinSessionTokenText
         submit = submitJoinButton
         cancel = cancelJoinButton
         submit.setOnClickListener {
