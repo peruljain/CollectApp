@@ -1,8 +1,8 @@
 package com.example.collectapp.home.view
 
 import com.example.collectapp.R
+import com.example.collectapp.base.BaseRecyclerAdapter
 import com.example.collectapp.home.provider.model.SessionDataModel
-import com.taz.cureous.mvp.BaseRecyclerAdapter
 import kotlinx.android.synthetic.main.item_session_list.view.*
 
 class SessionListAdapter ()
@@ -15,6 +15,7 @@ class SessionListAdapter ()
         val createdOnText = "on ${response.createdOn}"
         holder.itemView.sessionListItemCreatedBy.text = createdByText
         holder.itemView.sessionListItemCreatedOn.text = createdOnText
+
     }
 
 }

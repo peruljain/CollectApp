@@ -1,0 +1,46 @@
+package com.example.collectapp.session.transactiongroup.view
+
+import com.example.collectapp.R
+import com.example.collectapp.base.BaseDialogFragment
+import com.example.collectapp.helper.Constants
+import com.example.collectapp.session.transactiongroup.presenter.TransactionGroupCreatePresenter
+import com.example.collectapp.session.transactiongroup.provider.TransactionGroupProvider
+import com.example.collectapp.session.transactiongroup.provider.model.TransactionCreateModel
+import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.fragment_transaction_group_create_view.*
+import kotlinx.android.synthetic.main.fragment_transaction_group_create_view.view.*
+
+class TransactionGroupCreateView : BaseDialogFragment<TransactionCreateModel>() {
+    override val layoutId: Int = R.layout.fragment_transaction_group_create_view
+    lateinit var presenter : TransactionGroupCreatePresenter
+
+    override fun loadResponse(responseModel: TransactionCreateModel) {
+        if (responseModel.success) {
+            this.show(responseModel.message)
+        }
+        else {
+            this.show(responseModel.message)
+        }
+        // To dismiss the fragment
+        dismiss()
+    }
+
+    override fun initView() {
+
+        submitTransactionGroupCreateBtn.setOnClickListener {
+            submitClick()
+        }
+        cancelButtonResponse.setOnClickListener {
+            dismiss()
+        }
+    }
+
+    private fun submitClick() {
+        var jsonObject = JsonObject()
+        jsonObject.addProperty("groupName", transactionGroupNameCreate.transactionGroupNameCreateText.toString())
+        jsonObject.addProperty(Constants.session_ID, tag!!.toLong())
+        presenter = TransactionGroupCreatePresenter(this, TransactionGroupProvider(jsonObject))
+    }
+
+
+}

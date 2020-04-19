@@ -20,10 +20,13 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
             .getSessionCreateResponse(header, jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                callback.onSuccess(it)
-                callback.onFailure(it.message);
-            }
+            .subscribeBy(
+                onSuccess = {
+                    if(it.success)      callback.onSuccess(it)
+                    else    callback.onFailure("Error: ${it.message}")
+                },
+                onError = { callback.onFailure(it.message?:"Some Error Occurred") }
+            )
     }
 
     open fun getUserSessionJoinResponse(callback: PresenterCallback<GeneralModel>) {
@@ -31,10 +34,14 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
             .getSessionJoinResponse(header, jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                callback.onSuccess(it)
-                callback.onFailure(it.message);
-            }
+            .subscribeBy(
+                onSuccess = {
+                    if(it.success)      callback.onSuccess(it)
+                    else    callback.onFailure("Error: ${it.message}")
+                },
+                onError = { callback.onFailure(it.message?:"Some Error Occurred") }
+            )
+
     }
 
     open fun getUserSessionListResponse(callback: PresenterCallback<SessionListModel>) {

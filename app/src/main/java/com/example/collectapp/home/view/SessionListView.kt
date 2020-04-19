@@ -1,17 +1,19 @@
 package com.example.collectapp.home.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.collectapp.R
+import com.example.collectapp.base.BaseListFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.SharedPref
 import com.example.collectapp.home.presenter.SessionListPresenter
 import com.example.collectapp.home.provider.SessionListProvider
 import com.example.collectapp.home.provider.model.SessionDataModel
 import com.example.collectapp.home.provider.model.SessionListModel
+import com.example.collectapp.session.SessionActivity
 import com.google.gson.JsonObject
-import com.taz.cureous.mvp.BaseListFragment
 import kotlinx.android.synthetic.main.fragment_session_list.*
 
 
@@ -38,13 +40,16 @@ class SessionListView :
         getList()
 
         createSessionFAB.setOnClickListener {
-            createClick()
+            createSessionFragment.show(parentFragmentManager, "CreateSession")
         }
         joinSessionFAB.setOnClickListener {
-            joinClick()
+            joinSessionFragment.show(parentFragmentManager, "JoinSession")
         }
 
         adapter.listener = { v, it ->
+            val intent = Intent(this.context, SessionActivity::class.java)
+            intent.putExtra(Constants.session_ID, it.sessionID)
+            startActivity(intent)
             show("Clicked: ${it.sessionName}")
         }
     }
@@ -61,9 +66,7 @@ class SessionListView :
         presenter.getSessionListResponse()
     }
 
-    private fun joinClick() = joinSessionFragment.show(parentFragmentManager, "JoinSession")
 
-    private fun createClick() = createSessionFragment.show(parentFragmentManager, "CreateSession")
 
 
 }

@@ -21,4 +21,9 @@
     <string name="cancel">Cancel</string>
     <string name="session_name">Session Name</string>
     <string name="session_token">Session Token</string>
+    <string name="members">Members</string>
+    <string name="notification">Notification</string>
+    <string name="all_transactions">All Transactions</string>
+    <string name="transaction_group">Transaction Group</string>
+    <string name="member_joined_date">joined</string>
 </resources>

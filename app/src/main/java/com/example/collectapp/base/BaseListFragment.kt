@@ -1,4 +1,4 @@
-package com.taz.cureous.mvp
+package com.example.collectapp.base
 
 import android.os.Bundle
 import android.view.View

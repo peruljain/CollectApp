@@ -13,4 +13,7 @@ object Urls {
     const val SESSION_CREATE = "session/create/"
     const val SESSION_JOIN =  "session/join/"
     const val SESSION_LIST = "session/list/"
+    const val SESSION_MEMBERS = "session/member/list/"
+    const val TRANSACTION_GROUP_CREATE = "'transaction/group/create/"
+    const val TRANSACTION_GROUP_LIST = "transaction/group/list/"
 }

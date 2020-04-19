@@ -19,10 +19,13 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
         ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignInResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                callback.onSuccess(it)
-                callback.onFailure(it.message);
-            }
+            .subscribeBy(
+                onSuccess = {
+                    if(it.success)      callback.onSuccess(it)
+                    else    callback.onFailure("Error: ${it.message}")
+                },
+                onError = { callback.onFailure(it.message?:"Some Error Occurred") }
+            )
     }
 
     open fun getUserSignUpResponse(callback: PresenterCallback<AuthenticationModel>) {
@@ -30,39 +33,51 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnError { t-> Log.e("Error", t.message.toString()) }
-            .subscribeBy {
-                callback.onSuccess(it)
-                callback.onFailure(it.message);
-            }
+            .subscribeBy(
+                onSuccess = {
+                    if(it.success)      callback.onSuccess(it)
+                    else    callback.onFailure("Error: ${it.message}")
+                },
+                onError = { callback.onFailure(it.message?:"Some Error Occurred") }
+            )
     }
 
     open fun getUserSignUpOtpResponse(callback: PresenterCallback<AuthenticationModel>) {
         ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignUpOtpResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                callback.onSuccess(it)
-                callback.onFailure(it.message);
-            }
+            .subscribeBy(
+                onSuccess = {
+                    if(it.success)      callback.onSuccess(it)
+                    else    callback.onFailure("Error: ${it.message}")
+                },
+                onError = { callback.onFailure(it.message?:"Some Error Occurred") }
+            )
     }
 
     open fun getUserForgotPasswordResponse(callback: PresenterCallback<AuthenticationModel>) {
         ApiClient.retroClient.create(AuthenticationApi ::class.java).getForgotPasswordResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                callback.onSuccess(it)
-                callback.onFailure(it.message);
-            }
+            .subscribeBy(
+                onSuccess = {
+                    if(it.success)      callback.onSuccess(it)
+                    else    callback.onFailure("Error: ${it.message}")
+                },
+                onError = { callback.onFailure(it.message?:"Some Error Occurred") }
+            )
     }
 
     open fun getUserResetPasswordResponse (callback: PresenterCallback<AuthenticationModel>) {
         ApiClient.retroClient.create(AuthenticationApi ::class.java).getResetPasswordResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                callback.onSuccess(it)
-                callback.onFailure(it.message);
-            }
+            .subscribeBy(
+                onSuccess = {
+                    if(it.success)      callback.onSuccess(it)
+                    else    callback.onFailure("Error: ${it.message}")
+                },
+                onError = { callback.onFailure(it.message?:"Some Error Occurred") }
+            )
     }
 }

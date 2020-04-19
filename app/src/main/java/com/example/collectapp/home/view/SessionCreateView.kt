@@ -17,9 +17,7 @@ import kotlinx.android.synthetic.main.fragment_session_create_view.view.*
 class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
 
     override val layoutId: Int = R.layout.fragment_session_create_view
-    lateinit var sessionName : EditText
     lateinit var submit : Button
-    lateinit var cancel : Button
     lateinit var presenter : SessionCreatePresenter
 
     override fun loadResponse(responseModel: SessionCreateModel) {
@@ -39,14 +37,10 @@ class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
     }
 
     override fun initView() {
-
-//        sessionName = sessionNameCreate.sessionNameCreateText
-        submit = submitSessionCreateBtn
-        cancel = cancelButtonResponse
-        submit.setOnClickListener {
+        submitSessionCreateBtn.setOnClickListener {
             submitClick()
         }
-        cancel.setOnClickListener {
+        cancelButtonResponse.setOnClickListener {
             cancelClick()
         }
     }
@@ -56,9 +50,8 @@ class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
     }
 
     private fun submitClick() {
-
         var jsonObject = JsonObject()
-        jsonObject.addProperty("sessionName", sessionName.text.toString())
+        jsonObject.addProperty("sessionName", sessionNameCreate.sessionNameCreateText.toString())
         var header = SharedPref.getString(Constants.authorization)
         presenter = SessionCreatePresenter(this, SessionListProvider(header!!, jsonObject))
         presenter.getSessionCreateResponse()

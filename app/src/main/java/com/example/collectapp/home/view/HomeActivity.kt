@@ -24,7 +24,6 @@ class HomeActivity : BaseActivity(R.layout.activity_home) {
     val rootDestinations = setOf(R.id.sessionListView, R.id.dashboardView)
 
     override fun initActivity() {
-
         SharedPref.instantiate(this)
         val accessToken: String? = SharedPref.getString(Constants.authorization)
         var phoneNumber:String? = SharedPref.getString(Constants.phoneNumber)
@@ -32,8 +31,6 @@ class HomeActivity : BaseActivity(R.layout.activity_home) {
         progressBar = progressBarHome
         swipeRefreshLayout = swipeRefreshLayoutHome
         navController = findNavController(R.id.fragmentHostHome)
-//        val appBarConfiguration = AppBarConfiguration(rootDestinations)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         setupActionBarWithNavController(navController)
         NavigationUI.setupWithNavController(bottomNavHome, navController);
         NavigationUI.setupActionBarWithNavController(this, navController);

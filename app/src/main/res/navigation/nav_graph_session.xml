@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_session"
+    app:startDestination="@id/sessionViewFragment">
+
+    <fragment
+        android:id="@+id/sessionViewFragment"
+        android:name="com.example.collectapp.session.SessionViewFragment"
+        android:label="fragment_session_view"
+        tools:layout="@layout/fragment_session_view" >
+        <action
+            android:id="@+id/action_sessionViewFragment_to_membersListView"
+            app:destination="@id/membersListView" />
+    </fragment>
+    <fragment
+        android:id="@+id/membersListView"
+        android:name="com.example.collectapp.session.members.view.MembersListView"
+        android:label="fragment_member_list"
+        tools:layout="@layout/fragment_member_list" />
+</navigation>
