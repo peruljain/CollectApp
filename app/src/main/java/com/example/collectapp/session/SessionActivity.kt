@@ -31,7 +31,7 @@ class SessionActivity : BaseActivity(R.layout.activity_session) {
         navController = findNavController(R.id.fragmentHostSession)
         var bundle = Bundle()
         bundle.putLong(Constants.session_ID, sessionId)
-        navController.navigate(R.id.fragmentHostSession,bundle)
+//        navController.navigate(R.id.fragmentHostSession,bundle)
         setupActionBarWithNavController(navController)
     }
 }

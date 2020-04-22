@@ -17,9 +17,9 @@ class SessionViewFragment : BaseFragment<GeneralModel>() {
     }
     override fun initView() {
         navController = view!!.findNavController()
-        var sessionId = arguments?.getLong(Constants.session_ID)
+        var sessionId = activity?.intent!!.getLongExtra(Constants.session_ID,0)
         var bundle = Bundle()
-        bundle.putLong(Constants.session_ID,sessionId!!)
+        bundle.putLong(Constants.session_ID,sessionId)
         sessionMembersCard.setOnClickListener { navController!!.navigate(R.id.action_sessionViewFragment_to_membersListView,bundle)}
     }
 

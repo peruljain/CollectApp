@@ -8,26 +8,26 @@ import com.example.collectapp.base.BaseListFragment
 import com.example.collectapp.base.BaseRecyclerAdapter
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.session.members.presenter.MemberListPresenter
-import com.example.collectapp.session.members.view.MembersListAdapter
 import com.example.collectapp.session.members.provider.SessionMemberProvider
 import com.example.collectapp.session.members.provider.model.MemberDataModel
 import com.example.collectapp.session.members.provider.model.MembersListModel
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.fragment_session_list.*
+import kotlinx.android.synthetic.main.fragment_member_list.*
 
-class MembersListView : BaseListFragment<MembersListModel, MemberDataModel, BaseRecyclerAdapter<MemberDataModel>>() {
+class MembersListView :
+    BaseListFragment<MembersListModel, MemberDataModel, BaseRecyclerAdapter<MemberDataModel>>() {
 
     override val adapter: BaseRecyclerAdapter<MemberDataModel> =
         MembersListAdapter()
 
-    lateinit override  var recyclerView: RecyclerView
+    lateinit override var recyclerView: RecyclerView
     override val layoutId: Int = R.layout.fragment_member_list
-    lateinit var presenter : MemberListPresenter
-     var sessionId : Long? = null
+    lateinit var presenter: MemberListPresenter
+    var sessionId: Long? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = sessionRecyclerView
+        recyclerView = memberRecyclerView
         super.onViewCreated(view, savedInstanceState)
     }
 

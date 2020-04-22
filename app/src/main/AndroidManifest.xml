@@ -17,8 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.view.HomeActivity" >
-        </activity>
+        <activity android:name=".home.view.HomeActivity" />
+        <activity android:name=".session.SessionActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
