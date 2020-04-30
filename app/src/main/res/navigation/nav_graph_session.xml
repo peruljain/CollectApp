@@ -13,10 +13,26 @@
         <action
             android:id="@+id/action_sessionViewFragment_to_membersListView"
             app:destination="@id/membersListView" />
+        <action
+            android:id="@+id/action_sessionViewFragment_to_transactionListView"
+            app:destination="@id/transactionListView" />
+        <action
+            android:id="@+id/action_sessionViewFragment_to_allTransactionsListView"
+            app:destination="@id/allTransactionsListView" />
     </fragment>
     <fragment
         android:id="@+id/membersListView"
         android:name="com.example.collectapp.session.members.view.MembersListView"
         android:label="fragment_member_list"
         tools:layout="@layout/fragment_member_list" />
+    <fragment
+        android:id="@+id/transactionListView"
+        android:name="com.example.collectapp.session.transactiongroup.view.TransactionListView"
+        android:label="fragment_group_transaction_list"
+        tools:layout="@layout/fragment_group_transaction_list" />
+    <fragment
+        android:id="@+id/allTransactionsListView"
+        android:name="com.example.collectapp.session.alltransactions.view.AllTransactionsListView"
+        android:label="fragment_all_transaction_list"
+        tools:layout="@layout/fragment_all_transaction_list" />
 </navigation>

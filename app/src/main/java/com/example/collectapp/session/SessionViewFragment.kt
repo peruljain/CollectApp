@@ -21,6 +21,8 @@ class SessionViewFragment : BaseFragment<GeneralModel>() {
         var bundle = Bundle()
         bundle.putLong(Constants.session_ID,sessionId)
         sessionMembersCard.setOnClickListener { navController!!.navigate(R.id.action_sessionViewFragment_to_membersListView,bundle)}
+        sessionTransactionGroup.setOnClickListener { navController!!.navigate(R.id.action_sessionViewFragment_to_transactionListView,bundle)}
+        sessionTransactionCard.setOnClickListener { navController!!.navigate(R.id.action_sessionViewFragment_to_allTransactionsListView,bundle)}
     }
 
 }

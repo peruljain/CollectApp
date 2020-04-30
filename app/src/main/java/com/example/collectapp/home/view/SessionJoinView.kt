@@ -58,7 +58,7 @@ class SessionJoinView : BaseDialogFragment<GeneralModel>() {
 
     private fun submitClick() {
         var jsonObject = JsonObject()
-        jsonObject.addProperty(Constants.session_Token, SharedPref.getString(Constants.session_Token))
+        jsonObject.addProperty(Constants.session_Token, sessionToken.toString())
         jsonObject.addProperty(Constants.session_ID,SharedPref.getLong(Constants.session_ID))
         var header = SharedPref.getString(Constants.authorization)
         presenter = SessionJoinPresenter(this, SessionListProvider(header!!, jsonObject))

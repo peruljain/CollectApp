@@ -246,13 +246,25 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="allTransactionsListView">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="356" />
+                            <option name="y" value="81" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="membersListView">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="79" />
-                            <option name="y" value="-55" />
+                            <option name="x" value="-59" />
+                            <option name="y" value="-47" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -263,8 +275,34 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-137" />
-                            <option name="y" value="83" />
+                            <option name="x" value="-308" />
+                            <option name="y" value="134" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_sessionViewFragment_to_membersListView">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_sessionViewFragment_to_transactionListView">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="transactionListView">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-40" />
+                            <option name="y" value="277" />
                           </Point>
                         </option>
                       </LayoutPositions>
