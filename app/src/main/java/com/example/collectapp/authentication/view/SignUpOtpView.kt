@@ -12,7 +12,6 @@ import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.SharedPref
 import com.example.collectapp.home.view.HomeActivity
-import com.example.collectapp.home.view.SessionListView
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_up_otp.*
 import kotlinx.android.synthetic.main.fragment_sign_up_otp.view.*
@@ -32,7 +31,7 @@ class SignUpOtpView() : BaseFragment<AuthenticationModel>() {
             SharedPref.putString(Constants.phoneNumber, arguments?.getString("phone")!!)
             val intent = Intent(this.context, HomeActivity::class.java)
             startActivity(intent)
-            activity!!.finish()
+            requireActivity().finish()
         }
         else {
             this.show(responseModel.message)
@@ -51,10 +50,10 @@ class SignUpOtpView() : BaseFragment<AuthenticationModel>() {
     private fun submit() {
 
         if (!this.check(otp.toString())) {
-            this.show("Please Enter OTP");
+            this.show("Please Enter OTP")
         }
         else {
-            var jsonObject = JsonObject()
+            val jsonObject = JsonObject()
             jsonObject.addProperty("phone", arguments?.getString("phone"))
             jsonObject.addProperty("otp", otp?.text.toString().toInt())
             presenter = AuthenticationSignUpOtpPresenter(this, AuthenticationProvider(jsonObject))

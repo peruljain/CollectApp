@@ -11,11 +11,8 @@ class SessionListAdapter ()
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val response = list[position]
         holder.itemView.sessionListItemName.text = response.sessionName
-        val createdByText = "Created by ${response.createdBy}"
-        val createdOnText = "on ${response.createdOn}"
-        holder.itemView.sessionListItemCreatedBy.text = createdByText
-        holder.itemView.sessionListItemCreatedOn.text = createdOnText
-
+        val createdText = "Created by ${response.createdBy} on ${response.createdOn}"
+        holder.itemView.sessionListItemCreatedText.text = createdText
     }
 
 }

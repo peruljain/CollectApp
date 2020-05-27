@@ -1,11 +1,11 @@
 package com.example.collectapp.home.view
 
-import android.content.Intent
 import android.widget.Button
 import android.widget.EditText
 
 import com.example.collectapp.R
 import com.example.collectapp.base.BaseDialogFragment
+import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.GeneralModel
 import com.example.collectapp.helper.SharedPref
@@ -16,8 +16,10 @@ import kotlinx.android.synthetic.main.fragment_session_join_view.*
 import kotlinx.android.synthetic.main.fragment_session_join_view.view.*
 
 
-class SessionJoinView : BaseDialogFragment<GeneralModel>() {
-
+class SessionJoinView : BaseFragment<GeneralModel>() {
+    companion object {
+        val TAG = "SessionJoinView"
+    }
     override val layoutId: Int = R.layout.fragment_session_join_view
 
     lateinit var sessionToken : EditText
@@ -36,31 +38,24 @@ class SessionJoinView : BaseDialogFragment<GeneralModel>() {
         else {
             this.show(responseModel.message)
         }
-        dismiss()
+//        dismiss()
 
     }
 
     override fun initView() {
         sessionToken = joinSessionToken.joinSessionTokenText
         submit = submitJoinButton
-        cancel = cancelJoinButton
         submit.setOnClickListener {
             submitClick()
         }
-        cancel.setOnClickListener {
-            cancelClick()
-        }
     }
 
-    private fun cancelClick() {
-        dismiss()
-    }
 
     private fun submitClick() {
-        var jsonObject = JsonObject()
+        val jsonObject = JsonObject()
         jsonObject.addProperty(Constants.session_Token, sessionToken.toString())
         jsonObject.addProperty(Constants.session_ID,SharedPref.getLong(Constants.session_ID))
-        var header = SharedPref.getString(Constants.authorization)
+        val header = SharedPref.getString(Constants.authorization)
         presenter = SessionJoinPresenter(this, SessionListProvider(header!!, jsonObject))
         presenter.getJoinReponse()
     }

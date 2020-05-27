@@ -4,6 +4,19 @@
     <color name="colorPrimaryDark">#2E7D32</color>
     <color name="colorAccent">#546E7A</color>
 
+    <color name="primaryColor">#4dd0e1</color>
+    <color name="primaryLightColor">#88ffff</color>
+    <color name="primaryDarkColor">#009faf</color>
+    <color name="secondaryColor">#FFEE58</color>
+    <color name="secondaryLightColor">#FFF38E</color>
+    <color name="secondaryDarkColor">#F6E230</color>
+
+    <color name="greenBackgroundColor">#00EEA5</color>
+    <color name="lightGreenBackgroundColor">#D1FFF1</color>
+    <color name="tabUnselectedColor">#7FDBE7</color>
+    <color name="backgroundColor">#F8F8F8</color>
+
+
 
     <!-- google's material design colours from
     http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->

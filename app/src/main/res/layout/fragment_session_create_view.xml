@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:minWidth="320dp"
+    android:orientation="vertical"
     tools:context=".home.view.SessionCreateView">
 
     <LinearLayout
-        android:layout_centerInParent="true"
         android:id="@+id/linearLayoutContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/md_white_1000"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/layout_padding">
 
         <com.google.android.material.textview.MaterialTextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/ebrima"
             android:padding="@dimen/element_padding"
-            android:text="Create Session" />
+            android:text="@string/create_session"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/sessionNameCreate"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ebrima"
+            android:hint="@string/enter_session_name"
             android:padding="@dimen/element_padding"
-            android:fontFamily="@font/lato"
-            android:hint="Enter Session Name"
-            app:startIconDrawable="@drawable/ic_create">
+            app:boxBackgroundColor="@color/lightGreenBackgroundColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sessionNameCreateText"
@@ -41,26 +48,17 @@
                 android:inputType="textAutoComplete" />
 
         </com.google.android.material.textfield.TextInputLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/element_padding"
-            android:gravity="end"
-            android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/submitSessionCreateBtn"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/submit" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/cancelButtonResponse"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cancel" />
-        </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitSessionCreateBtn"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:text="@string/submit"
+        android:textColor="@color/primaryDarkColor"
+        android:textStyle="bold" />
+</LinearLayout>

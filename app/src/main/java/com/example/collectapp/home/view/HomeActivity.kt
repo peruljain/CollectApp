@@ -4,7 +4,6 @@ import android.widget.ProgressBar
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -26,13 +25,13 @@ class HomeActivity : BaseActivity(R.layout.activity_home) {
     override fun initActivity() {
         SharedPref.instantiate(this)
         val accessToken: String? = SharedPref.getString(Constants.authorization)
-        var phoneNumber:String? = SharedPref.getString(Constants.phoneNumber)
+        var phoneNumber: String? = SharedPref.getString(Constants.phoneNumber)
         ApiClient.instantiateWithAccessToken(this, accessToken)
         progressBar = progressBarHome
         swipeRefreshLayout = swipeRefreshLayoutHome
         navController = findNavController(R.id.fragmentHostHome)
         setupActionBarWithNavController(navController)
-        NavigationUI.setupWithNavController(bottomNavHome, navController);
-        NavigationUI.setupActionBarWithNavController(this, navController);
+        NavigationUI.setupWithNavController(bottomNavHome, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 }

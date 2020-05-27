@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.collectapp.R
-import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.base.BaseListFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.session.alltransactions.presenter.AllTransactionListPresenter
@@ -32,12 +31,12 @@ class AllTransactionsListView : BaseListFragment<AllTransactionListModel,AllTran
     }
 
     override fun initView() {
-        sessionId = arguments!!.getLong(Constants.session_ID)
+        sessionId = requireArguments().getLong(Constants.session_ID)
         getList()
     }
 
     private fun getList() {
-        var jsonObject = JsonObject()
+        val jsonObject = JsonObject()
         jsonObject.addProperty("sessionId", sessionId)
         presenter = AllTransactionListPresenter(this, AllTransactionProvider(jsonObject))
         presenter.getTransactionListResponse()

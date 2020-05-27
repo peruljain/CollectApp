@@ -1,6 +1,7 @@
 package com.example.collectapp.helper
 
 import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,7 +15,7 @@ object ApiClient {
 
     lateinit var retroClientCache: Retrofit
     var retroClient: Retrofit
-    private const val BASE_URL = Urls.BASE_URL;
+    private const val BASE_URL = Urls.BASE_URL
     init {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -40,6 +41,7 @@ object ApiClient {
             .writeTimeout(2, TimeUnit.MINUTES) // write timeout
             .readTimeout(2, TimeUnit.MINUTES) // read timeout
             .addInterceptor(interceptor)
+            .addInterceptor(ChuckerInterceptor(context))
             .addInterceptor(object : Interceptor { // Adding Permanent Header
                 @Throws(IOException::class)
                 override fun intercept(chain: Interceptor.Chain): Response {

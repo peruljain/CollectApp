@@ -1,9 +1,9 @@
 package com.example.collectapp.home.view
 
 import android.widget.Button
-import android.widget.EditText
 import com.example.collectapp.R
 import com.example.collectapp.base.BaseDialogFragment
+import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.SharedPref
 import com.example.collectapp.home.presenter.SessionCreatePresenter
@@ -14,7 +14,11 @@ import kotlinx.android.synthetic.main.fragment_session_create_view.*
 import kotlinx.android.synthetic.main.fragment_session_create_view.view.*
 
 
-class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
+class SessionCreateView :  BaseFragment<SessionCreateModel>() {
+
+    companion object {
+        val TAG = "SessionCreateView"
+    }
 
     override val layoutId: Int = R.layout.fragment_session_create_view
     lateinit var submit : Button
@@ -23,8 +27,8 @@ class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
     override fun loadResponse(responseModel: SessionCreateModel) {
 
         if (responseModel.success) {
-            var sessionId = responseModel.data.sessionID
-            var sessionToken = responseModel.data.sessionToken
+            val sessionId = responseModel.data.sessionID
+            val sessionToken = responseModel.data.sessionToken
             SharedPref.putLong(Constants.session_ID,sessionId)
             SharedPref.putString(Constants.session_Token,sessionToken!!)
             this.show(responseModel.message)
@@ -33,26 +37,19 @@ class SessionCreateView :  BaseDialogFragment<SessionCreateModel>() {
             this.show(responseModel.message)
         }
         // To dismiss the fragment
-        dismiss()
+//        dismiss()
     }
 
     override fun initView() {
         submitSessionCreateBtn.setOnClickListener {
             submitClick()
         }
-        cancelButtonResponse.setOnClickListener {
-            cancelClick()
-        }
-    }
-
-    private fun cancelClick() {
-        dismiss()
     }
 
     private fun submitClick() {
-        var jsonObject = JsonObject()
+        val jsonObject = JsonObject()
         jsonObject.addProperty("sessionName", sessionNameCreate.sessionNameCreateText.toString())
-        var header = SharedPref.getString(Constants.authorization)
+        val header = SharedPref.getString(Constants.authorization)
         presenter = SessionCreatePresenter(this, SessionListProvider(header!!, jsonObject))
         presenter.getSessionCreateResponse()
     }

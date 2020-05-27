@@ -14,11 +14,13 @@ import com.example.collectapp.home.provider.model.SessionDataModel
 import com.example.collectapp.home.provider.model.SessionListModel
 import com.example.collectapp.session.SessionActivity
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_session_list.*
 
 
 class SessionListView :
     BaseListFragment<SessionListModel, SessionDataModel, SessionListAdapter>() {
+
 
     lateinit var createSessionFragment: SessionCreateView
     lateinit var joinSessionFragment: SessionJoinView
@@ -39,12 +41,10 @@ class SessionListView :
         // getList
         getList()
 
-        createSessionFAB.setOnClickListener {
-            createSessionFragment.show(parentFragmentManager, "CreateSession")
+        requireActivity().sessionNewFAB.setOnClickListener {
+            SessionNewHostDialogFragment().show(parentFragmentManager, SessionCreateView.TAG)
         }
-        joinSessionFAB.setOnClickListener {
-            joinSessionFragment.show(parentFragmentManager, "JoinSession")
-        }
+
 
         adapter.listener = { v, it ->
             val intent = Intent(this.context, SessionActivity::class.java)
@@ -56,7 +56,8 @@ class SessionListView :
 
     override fun loadResponse(responseModel: SessionListModel) {
         print(responseModel)
-        adapter.list = responseModel.data
+//        adapter.list = responseModel.data
+        adapter.list = List(10){responseModel.data[0]}
         adapter.notifyDataSetChanged()
     }
 

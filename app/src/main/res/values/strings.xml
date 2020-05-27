@@ -26,4 +26,19 @@
     <string name="all_transactions">All Transactions</string>
     <string name="transaction_group">Transaction Group</string>
     <string name="member_joined_date">joined</string>
+    <string name="rupee" translatable="false">\u20B9 %1$s</string>
+    <string name="rupee_with_negative_sign" translatable="false">-\u20B9 %1$s</string>
+    <string name="rupee_with_positive_sign" translatable="false">+\u20B9 %1$s</string>
+    <string name="rupee_symbol" translatable="false">\u20B9</string>
+    <string name="percentage" translatable="false"> %1$s%</string>
+    <string name="from_to">%1$s to %1$s</string>
+    <string name="sample_desc">This is a description of the group Hello , you understand right. OK then, cool. Hope you are…</string>
+    <string name="sample_short_desc">Created 6 months ago by Mango Man</string>
+    <string name="sample_name">Fresher Collections</string>
+    <string name="create">Create</string>
+    <string name="join">Join</string>
+    <string name="join_session">Join Session</string>
+    <string name="enter_session_token">Enter Session Token</string>
+    <string name="create_session">Create Session</string>
+    <string name="enter_session_name">Enter Session Name</string>
 </resources>

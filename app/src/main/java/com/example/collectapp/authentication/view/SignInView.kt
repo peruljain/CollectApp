@@ -12,7 +12,6 @@ import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.SharedPref
 import com.example.collectapp.home.view.HomeActivity
-import com.example.collectapp.home.view.SessionListView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_sign_in.*
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_sign_in.view.*
 class SignInView() : BaseFragment<AuthenticationModel>() {
 
     override val layoutId: Int = R.layout.fragment_sign_in
-    var navController : NavController? = null;
+    var navController : NavController? = null
     var userContactNumber : String? = null
     var userLoginPassword : String? = null
     lateinit var  phoneNumber : TextInputEditText
@@ -31,7 +30,7 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
     override fun initView() {
         phoneNumber  = userPhoneNumber.userPhoneNumberText
         password = userPassword.userPasswordText
-        navController = view!!.findNavController()
+        navController = requireView().findNavController()
         loginButton.setOnClickListener {
             loginCall()
         }
@@ -56,7 +55,7 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
             SharedPref.putString(Constants.phoneNumber, phoneNumber.text.toString())
             val intent = Intent(this.context, HomeActivity::class.java)
             startActivity(intent)
-            activity!!.finish()
+            requireActivity().finish()
 
         }
         else {
