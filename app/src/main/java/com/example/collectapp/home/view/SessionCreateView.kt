@@ -2,7 +2,6 @@ package com.example.collectapp.home.view
 
 import android.widget.Button
 import com.example.collectapp.R
-import com.example.collectapp.base.BaseDialogFragment
 import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.SharedPref
@@ -27,7 +26,7 @@ class SessionCreateView :  BaseFragment<SessionCreateModel>() {
     override fun loadResponse(responseModel: SessionCreateModel) {
 
         if (responseModel.success) {
-            val sessionId = responseModel.data.sessionID
+            val sessionId = responseModel.data.sessionId
             val sessionToken = responseModel.data.sessionToken
             SharedPref.putLong(Constants.session_ID,sessionId)
             SharedPref.putString(Constants.session_Token,sessionToken!!)

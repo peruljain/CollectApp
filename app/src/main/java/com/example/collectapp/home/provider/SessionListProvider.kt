@@ -15,7 +15,7 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
     // step1 call by presenter
     // step2 send data to presenter
 
-    open fun getUserSessionCreateResponse(callback: PresenterCallback<SessionCreateModel>) {
+    fun getUserSessionCreateResponse(callback: PresenterCallback<SessionCreateModel>) {
         ApiClient.retroClientCache.create(SessionApi::class.java)
             .getSessionCreateResponse(header, jsonObject)
             .subscribeOn(Schedulers.io())
@@ -29,7 +29,7 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
             )
     }
 
-    open fun getUserSessionJoinResponse(callback: PresenterCallback<GeneralModel>) {
+     fun getUserSessionJoinResponse(callback: PresenterCallback<GeneralModel>) {
         ApiClient.retroClientCache.create(SessionApi::class.java)
             .getSessionJoinResponse(header, jsonObject)
             .subscribeOn(Schedulers.io())
@@ -44,7 +44,7 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
 
     }
 
-    open fun getUserSessionListResponse(callback: PresenterCallback<SessionListModel>) {
+    fun getUserSessionListResponse(callback: PresenterCallback<SessionListModel>) {
         ApiClient.retroClientCache.create(SessionApi::class.java).getSessionListResponse()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

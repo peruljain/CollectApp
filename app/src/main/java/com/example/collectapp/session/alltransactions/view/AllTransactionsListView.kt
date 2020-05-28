@@ -12,6 +12,7 @@ import com.example.collectapp.session.alltransactions.provider.model.AllTransact
 import com.example.collectapp.session.alltransactions.provider.model.AllTransactionModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_all_transaction_list.*
+import timber.log.Timber
 
 class AllTransactionsListView : BaseListFragment<AllTransactionListModel,AllTransactionModel,AllTransactionListAdapter>(){
 
@@ -33,13 +34,14 @@ class AllTransactionsListView : BaseListFragment<AllTransactionListModel,AllTran
     override fun initView() {
         sessionId = requireArguments().getLong(Constants.session_ID)
         getList()
+        Timber.d("sessionId= $sessionId")
     }
 
     private fun getList() {
-        val jsonObject = JsonObject()
-        jsonObject.addProperty("sessionId", sessionId)
-        presenter = AllTransactionListPresenter(this, AllTransactionProvider(jsonObject))
-        presenter.getTransactionListResponse()
+        sessionId?.let {
+            presenter = AllTransactionListPresenter(this, AllTransactionProvider(it))
+            presenter.getTransactionListResponse()
+        }
     }
 
 }

@@ -9,8 +9,8 @@ class MembersListAdapter() : BaseRecyclerAdapter<MemberDataModel>(R.layout.item_
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val response = list[position]
         holder.itemView.memberUserName.text = response.userName
-        val phoneNumber = "No. ${response.phone.toString()}"
-        val joinedOn = "joined ${response.joinedOn.toString()}"
+        val phoneNumber = response.phone
+        val joinedOn = "joined ${response.joinedOn}"
         holder.itemView.memberPhoneNumber.text = phoneNumber
         holder.itemView.memberJoinedDate.text = joinedOn
     }

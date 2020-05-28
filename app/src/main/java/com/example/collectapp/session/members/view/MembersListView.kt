@@ -13,6 +13,7 @@ import com.example.collectapp.session.members.provider.model.MemberDataModel
 import com.example.collectapp.session.members.provider.model.MembersListModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_member_list.*
+import timber.log.Timber
 
 class MembersListView :
     BaseListFragment<MembersListModel, MemberDataModel, BaseRecyclerAdapter<MemberDataModel>>() {
@@ -32,26 +33,30 @@ class MembersListView :
     }
 
     override fun loadResponse(responseModel: MembersListModel) {
-        print(responseModel)
+        Timber.d("response ${responseModel.data}")
         adapter.list = responseModel.data
+        memberCount.text = responseModel.data.size.toString()
         adapter.notifyDataSetChanged()
     }
 
     override fun initView() {
-        sessionId = arguments!!.getLong(Constants.session_ID)
+        sessionId = requireArguments().getLong(Constants.session_ID)
         getList()
+        Timber.d("sessionId= $sessionId")
     }
 
     private fun getList() {
-        var jsonObject = JsonObject()
-        jsonObject.addProperty("sessionId", sessionId)
-        presenter =
-            MemberListPresenter(
-                this,
-                SessionMemberProvider(
-                    jsonObject
+//        var jsonObject = JsonObject()
+//        jsonObject.addProperty("sessionId", sessionId)
+        sessionId?.let {
+            presenter =
+                MemberListPresenter(
+                    this,
+                    SessionMemberProvider(
+                        it
+                    )
                 )
-            )
-        presenter.getMemberListResponse()
+            presenter.getMemberListResponse()
+        }
     }
 }

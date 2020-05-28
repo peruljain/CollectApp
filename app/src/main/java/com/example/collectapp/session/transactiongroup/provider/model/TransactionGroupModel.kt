@@ -5,5 +5,5 @@ import java.util.*
 data class TransactionGroupModel(
     var groupId : Int,
     var groupName : String,
-    var createdOn : Date
+    var createdOn : String
 )

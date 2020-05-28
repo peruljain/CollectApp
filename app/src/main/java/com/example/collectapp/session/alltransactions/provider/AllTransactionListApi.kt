@@ -6,8 +6,9 @@ import com.google.gson.JsonObject
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface AllTransactionListApi {
     @GET(Urls.ALL_TRANSACTION_LIST)
-    fun getTransactionListResponse(@Body jsonObject: JsonObject) : Single<AllTransactionListModel>
+    fun getTransactionListResponse(@Query("sessionId") sessionId: Long) : Single<AllTransactionListModel>
 }

@@ -7,7 +7,7 @@ data class AllTransactionModel(
     var payerPhoneNumber : Long,
     var groupName : String,
     var amount : Int,
-    var paidOn : Date,
+    var paidOn : String,
     var collectedById : Int,
     var collectedBy : String
 )

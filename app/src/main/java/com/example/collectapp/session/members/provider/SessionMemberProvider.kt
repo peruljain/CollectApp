@@ -9,12 +9,12 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
 
-class SessionMemberProvider (var jsonObject: JsonObject){
+class SessionMemberProvider (var sessionId: Long){
 
-    open fun getUserMembersListResponse(callback: PresenterCallback<MembersListModel>) {
+     fun getUserMembersListResponse(callback: PresenterCallback<MembersListModel>) {
 
         ApiClient.retroClientCache.create(SessionMemberApi::class.java)
-            .getMemberList(jsonObject)
+            .getMemberList(sessionId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(

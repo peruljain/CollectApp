@@ -2,7 +2,7 @@ package com.example.collectapp.home.provider.model
 
 
 data class SessionDataModel (
-    var sessionID : Long,
+    var sessionId : Long,
     var sessionName : String,
     var sessionToken : String?,
     var createdOn : String,

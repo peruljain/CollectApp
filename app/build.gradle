@@ -71,4 +71,8 @@ dependencies {
 
     //Time Date Display
     implementation 'net.danlew:android.joda:2.10.6'
+
+    //Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    
 }

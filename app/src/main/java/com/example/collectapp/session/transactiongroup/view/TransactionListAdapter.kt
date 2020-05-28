@@ -9,9 +9,8 @@ class TransactionListAdapter : BaseRecyclerAdapter<TransactionGroupModel>(R.layo
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val response = list[position]
         holder.itemView.transactionGroupItemName.text = response.groupName
-        val groupId = "GroupId ${response.groupId}"
-        val createdOnText = "on ${response.createdOn}"
-        holder.itemView.transactionGroupId.text = groupId
+        val createdOnText = "Created on ${response.createdOn}"
+//        holder.itemView.transactionGroupId.text = groupId
         holder.itemView.transactionGroupItemCreatedOn.text = createdOnText
     }
 }

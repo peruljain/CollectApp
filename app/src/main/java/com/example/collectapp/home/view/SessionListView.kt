@@ -16,6 +16,7 @@ import com.example.collectapp.session.SessionActivity
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_session_list.*
+import timber.log.Timber
 
 
 class SessionListView :
@@ -48,9 +49,10 @@ class SessionListView :
 
         adapter.listener = { v, it ->
             val intent = Intent(this.context, SessionActivity::class.java)
-            intent.putExtra(Constants.session_ID, it.sessionID)
+            intent.putExtra(Constants.session_ID, it.sessionId)
+            Timber.d("sessionID = ${it.sessionId}")
             startActivity(intent)
-            show("Clicked: ${it.sessionName}")
+            show("Clicked: ${it.sessionId}")
         }
     }
 

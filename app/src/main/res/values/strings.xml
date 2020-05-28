@@ -41,4 +41,23 @@
     <string name="enter_session_token">Enter Session Token</string>
     <string name="create_session">Create Session</string>
     <string name="enter_session_name">Enter Session Name</string>
+    <string name="sample_username">Tazril Parveez Ali</string>
+    <string name="sample_amount">$ 540</string>
+    <string name="sample_number">7238127391</string>
+    <string name="members_count">Members Count:</string>
+    <string name="amount_collected">Amount Collected</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="about">About</string>
+    <string name="log_out">Log Out</string>
+    <string name="chat">Chat</string>
+    <string name="transactions">Transactions</string>
+    <string name="groups">Groups</string>
+    <string name="token">Token</string>
+    <string name="sample_token">asudoajoajdansja</string>
+    <string name="description">Description</string>
+    <string name="sample_duration">joined 3 days ago</string>
+    <string name="paid">Paid</string>
+    <string name="call">Call</string>
+    <string name="recieved_by">Recieved By</string>
+    <string name="group_name">Group Name</string>
 </resources>

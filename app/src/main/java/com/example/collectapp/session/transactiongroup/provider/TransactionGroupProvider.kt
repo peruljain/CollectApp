@@ -10,7 +10,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
 class TransactionGroupProvider(var jsonObject: JsonObject){
-    open fun getUserCreateGroupResponse(callback: PresenterCallback<TransactionCreateModel>){
+    fun getUserCreateGroupResponse(callback: PresenterCallback<TransactionCreateModel>){
         ApiClient.retroClientCache.create(TransactionGroupApi::class.java)
             .getTransactionGroupCreateResponse(jsonObject)
             .subscribeOn(Schedulers.io())
@@ -23,9 +23,9 @@ class TransactionGroupProvider(var jsonObject: JsonObject){
                 onError = { callback.onFailure(it.message?:"Some Error Occurred") }
             )
     }
-    open fun getUserListGroupResponse(callback: PresenterCallback<TransactionListModel>){
+    fun getUserListGroupResponse(callback: PresenterCallback<TransactionListModel>){
         ApiClient.retroClientCache.create(TransactionGroupApi::class.java)
-            .getTransactionGroupListResponse(jsonObject)
+            .getTransactionGroupListResponse(jsonObject["sessionId"].asLong)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(

@@ -8,11 +8,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
-class AllTransactionProvider(var jsonObject: JsonObject){
+class AllTransactionProvider(var sessionId: Long){
 
-   open fun getAllTransactionListResponse(callback: PresenterCallback<AllTransactionListModel>){
+    fun getAllTransactionListResponse(callback: PresenterCallback<AllTransactionListModel>){
        ApiClient.retroClientCache.create(AllTransactionListApi::class.java)
-           .getTransactionListResponse(jsonObject)
+           .getTransactionListResponse(sessionId)
            .subscribeOn(Schedulers.io())
            .observeOn(AndroidSchedulers.mainThread())
            .subscribeBy(
