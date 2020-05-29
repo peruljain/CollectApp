@@ -2,6 +2,7 @@ package com.example.collectapp.session
 
 import android.os.Bundle
 import android.widget.ProgressBar
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -18,20 +19,23 @@ class SessionActivity : BaseActivity(R.layout.activity_session) {
 
     override lateinit  var progressBar: ProgressBar
     override var swipeRefreshLayout: SwipeRefreshLayout? = null
-    override var toolbar: Toolbar? = null;
+    override var toolbar: Toolbar? = null
     private lateinit var navController: NavController
 
     override fun initActivity() {
         SharedPref.instantiate(this)
-        val accessToken: String? = SharedPref.getString(Constants.authorization)
+        val accessToken: String? = SharedPref.getString(Constants.AUTHORIZATION)
         ApiClient.instantiateWithAccessToken(this, accessToken)
         progressBar = progressBarSession
         swipeRefreshLayout = swipeRefreshLayoutSession
-        var sessionId = intent.getLongExtra(Constants.session_ID,0)
+        val sessionId = intent.getLongExtra(Constants.SESSION_ID,0)
         navController = findNavController(R.id.fragmentHostSession)
-        var bundle = Bundle()
-        bundle.putLong(Constants.session_ID, sessionId)
+        val bundle = Bundle()
+        bundle.putLong(Constants.SESSION_ID, sessionId)
 //        navController.navigate(R.id.fragmentHostSession,bundle)
         setupActionBarWithNavController(navController)
+        supportActionBar?.setHomeButtonEnabled(true)
     }
+
+    override fun onSupportNavigateUp(): Boolean = navController.navigateUp()
 }

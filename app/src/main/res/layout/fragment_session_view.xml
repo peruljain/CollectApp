@@ -234,24 +234,30 @@
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="24dp"
-                        android:layout_weight="1"
                         android:text="@string/token"
                         android:textColor="@color/md_black_1000"
                         android:textSize="16sp" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:id="@+id/action_copy"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
                         android:src="@drawable/ic_copy" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
+                        android:id="@+id/action_share"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
                         android:src="@drawable/ic_share" />
 
                 </LinearLayout>

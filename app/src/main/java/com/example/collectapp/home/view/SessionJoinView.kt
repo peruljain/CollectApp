@@ -2,9 +2,9 @@ package com.example.collectapp.home.view
 
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.DialogFragment
 
 import com.example.collectapp.R
-import com.example.collectapp.base.BaseDialogFragment
 import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.GeneralModel
@@ -31,14 +31,16 @@ class SessionJoinView : BaseFragment<GeneralModel>() {
 
         if(responseModel.success) {
             this.show(responseModel.message)
-
+            (parentFragment as SessionNewHostDialogFragment).run{
+//                refreshList()
+                dismiss()
+            }
 //            var intent = Intent(this.context, SessionListView::class.java)
 //            startActivity(intent)
         }
         else {
             this.show(responseModel.message)
         }
-//        dismiss()
 
     }
 
@@ -53,11 +55,15 @@ class SessionJoinView : BaseFragment<GeneralModel>() {
 
     private fun submitClick() {
         val jsonObject = JsonObject()
-        jsonObject.addProperty(Constants.session_Token, sessionToken.toString())
-        jsonObject.addProperty(Constants.session_ID,SharedPref.getLong(Constants.session_ID))
-        val header = SharedPref.getString(Constants.authorization)
+        jsonObject.addProperty(Constants.SESSION_TOKEN, sessionToken.text.toString())
+        jsonObject.addProperty(Constants.SESSION_ID,SharedPref.getLong(Constants.SESSION_ID))
+        val header = SharedPref.getString(Constants.AUTHORIZATION)
         presenter = SessionJoinPresenter(this, SessionListProvider(header!!, jsonObject))
         presenter.getJoinReponse()
     }
 
+    override fun onDestroyView() {
+        presenter.onCleared()
+        super.onDestroyView()
+    }
 }

@@ -26,7 +26,7 @@ class TransactionGroupCreateView : BaseDialogFragment<TransactionCreateModel>() 
     }
 
     override fun initView() {
-
+        presenter = TransactionGroupCreatePresenter(this)
         submitTransactionGroupCreateBtn.setOnClickListener {
             submitClick()
         }
@@ -36,10 +36,10 @@ class TransactionGroupCreateView : BaseDialogFragment<TransactionCreateModel>() 
     }
 
     private fun submitClick() {
-        var jsonObject = JsonObject()
+        val jsonObject = JsonObject()
         jsonObject.addProperty("groupName", transactionGroupNameCreate.transactionGroupNameCreateText.toString())
-        jsonObject.addProperty(Constants.session_ID, tag!!.toLong())
-        presenter = TransactionGroupCreatePresenter(this, TransactionGroupProvider(jsonObject))
+        jsonObject.addProperty("sessionId", requireArguments().getLong(Constants.SESSION_ID))
+        presenter.getTransactionGroupCreateResponse(jsonObject)
     }
 
 

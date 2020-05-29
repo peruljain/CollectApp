@@ -71,12 +71,12 @@ abstract class BaseDialogFragment<T>() : DialogFragment() {
 
     // check for empty text
     fun check(message: String) : Boolean {
-        return message.trim().isNotEmpty();
+        return message.trim().isNotEmpty()
     }
 
     fun checkPhone(message: String) : Boolean {
         var pattern : String = "[0-9]{10}"
-        return Pattern.matches(message, pattern);
+        return Pattern.matches(message, pattern)
     }
 
 }

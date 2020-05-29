@@ -36,7 +36,7 @@ class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
         phoneNumber = forgotPhoneNumber.forgotPhoneNumberText
         submitButton = forgotSubmit
         submitButton.setOnClickListener {
-            submit();
+            submit()
         }
     }
     private fun submit() {
@@ -51,5 +51,9 @@ class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
         presenter = AuthenticationForgotPasswordPresenter(this, AuthenticationProvider(jsonObject))
         presenter.getForgotPasswordResponse()
         }
+    }
+    override fun onDestroyView() {
+        presenter.onCleared()
+        super.onDestroyView()
     }
 }

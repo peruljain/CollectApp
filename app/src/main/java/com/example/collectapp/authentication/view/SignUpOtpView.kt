@@ -27,8 +27,8 @@ class SignUpOtpView() : BaseFragment<AuthenticationModel>() {
 
         if (responseModel.success) {
             this.show(responseModel.message)
-            SharedPref.putString(Constants.authorization, responseModel.access_token)
-            SharedPref.putString(Constants.phoneNumber, arguments?.getString("phone")!!)
+            SharedPref.putString(Constants.AUTHORIZATION, responseModel.access_token)
+            SharedPref.putString(Constants.PHONE_NUMBER, arguments?.getString("phone")!!)
             val intent = Intent(this.context, HomeActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
@@ -60,5 +60,8 @@ class SignUpOtpView() : BaseFragment<AuthenticationModel>() {
             presenter.getSignUpOtpResponse()
         }
     }
-
+    override fun onDestroyView() {
+        presenter.onCleared()
+        super.onDestroyView()
+    }
 }

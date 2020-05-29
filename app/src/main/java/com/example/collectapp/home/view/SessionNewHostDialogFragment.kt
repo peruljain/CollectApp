@@ -53,6 +53,10 @@ class SessionNewHostDialogFragment   : BaseDialogFragment<GeneralModel>() {
             }
         }
     }
+
+    fun refreshList() =
+        (parentFragment as SessionListView).presenter.getSessionListResponse()
+
 }
 
 class SessionNewTabsAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :

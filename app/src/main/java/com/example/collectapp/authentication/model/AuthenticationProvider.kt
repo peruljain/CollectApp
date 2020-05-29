@@ -5,6 +5,7 @@ import com.example.collectapp.helper.ApiClient
 import com.example.collectapp.helper.PresenterCallback
 import com.google.gson.JsonObject
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
@@ -14,9 +15,9 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
     // step2 send data to presenter
 
 
-    open fun getUserSignInResponse(callback: PresenterCallback<AuthenticationModel>) {
+     fun getUserSignInResponse(callback: PresenterCallback<AuthenticationModel>): Disposable {
 
-        ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignInResponse(jsonObject)
+        return ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignInResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
@@ -28,8 +29,8 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             )
     }
 
-    open fun getUserSignUpResponse(callback: PresenterCallback<AuthenticationModel>) {
-        ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignUpResponse(jsonObject)
+     fun getUserSignUpResponse(callback: PresenterCallback<AuthenticationModel>): Disposable {
+         return ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignUpResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnError { t-> Log.e("Error", t.message.toString()) }
@@ -42,8 +43,8 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             )
     }
 
-    open fun getUserSignUpOtpResponse(callback: PresenterCallback<AuthenticationModel>) {
-        ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignUpOtpResponse(jsonObject)
+     fun getUserSignUpOtpResponse(callback: PresenterCallback<AuthenticationModel>): Disposable {
+         return ApiClient.retroClient.create(AuthenticationApi ::class.java).getSignUpOtpResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
@@ -55,8 +56,8 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             )
     }
 
-    open fun getUserForgotPasswordResponse(callback: PresenterCallback<AuthenticationModel>) {
-        ApiClient.retroClient.create(AuthenticationApi ::class.java).getForgotPasswordResponse(jsonObject)
+     fun getUserForgotPasswordResponse(callback: PresenterCallback<AuthenticationModel>): Disposable {
+         return ApiClient.retroClient.create(AuthenticationApi ::class.java).getForgotPasswordResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
@@ -68,8 +69,8 @@ class AuthenticationProvider(val jsonObject: JsonObject)  {
             )
     }
 
-    open fun getUserResetPasswordResponse (callback: PresenterCallback<AuthenticationModel>) {
-        ApiClient.retroClient.create(AuthenticationApi ::class.java).getResetPasswordResponse(jsonObject)
+     fun getUserResetPasswordResponse (callback: PresenterCallback<AuthenticationModel>): Disposable {
+         return ApiClient.retroClient.create(AuthenticationApi ::class.java).getResetPasswordResponse(jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(

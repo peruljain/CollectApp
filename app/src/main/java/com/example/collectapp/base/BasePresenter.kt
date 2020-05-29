@@ -1,23 +1,14 @@
 package com.example.collectapp.base
 
-import com.example.collectapp.helper.PresenterCallback
+import com.example.collectapp.session.alltransactions.view.AllTransactionsListView
+import io.reactivex.disposables.CompositeDisposable
 
-abstract class BasePresenter<T>(val view: BaseFragment<T>, private val provider: BaseProvider<T>) {
+abstract class BasePresenter {
 
-    open fun getPresenterResponse() {
-        view.showProgressBar()
-        provider.getProviderResponse(object :
-            PresenterCallback<T> {
+    val compositeDisposable = CompositeDisposable()
 
-            override fun onSuccess(responseModel: T) {
-                view.hideProgressBar();
-                view.loadResponse(responseModel);
-            }
-            override fun onFailure(message: String) {
-                view show message
-                view.hideProgressBar()
-            }
-        })
+    open fun onCleared() {
+        compositeDisposable.dispose()
     }
 
 }

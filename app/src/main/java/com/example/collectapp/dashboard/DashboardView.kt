@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.collectapp.R
+import com.example.collectapp.base.BaseActivity
 
 class DashboardView : Fragment() {
-
+    companion object {
+        const val TAG = "DashboardView"
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

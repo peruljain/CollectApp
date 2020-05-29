@@ -7,6 +7,7 @@ import com.example.collectapp.home.provider.model.SessionCreateModel
 import com.example.collectapp.home.provider.model.SessionListModel
 import com.google.gson.JsonObject
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
@@ -15,8 +16,8 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
     // step1 call by presenter
     // step2 send data to presenter
 
-    fun getUserSessionCreateResponse(callback: PresenterCallback<SessionCreateModel>) {
-        ApiClient.retroClientCache.create(SessionApi::class.java)
+    fun getUserSessionCreateResponse(callback: PresenterCallback<SessionCreateModel>): Disposable {
+        return ApiClient.retroClientCache.create(SessionApi::class.java)
             .getSessionCreateResponse(header, jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -29,8 +30,8 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
             )
     }
 
-     fun getUserSessionJoinResponse(callback: PresenterCallback<GeneralModel>) {
-        ApiClient.retroClientCache.create(SessionApi::class.java)
+     fun getUserSessionJoinResponse(callback: PresenterCallback<GeneralModel>): Disposable {
+        return ApiClient.retroClientCache.create(SessionApi::class.java)
             .getSessionJoinResponse(header, jsonObject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -44,8 +45,8 @@ class SessionListProvider(var header: String, val jsonObject: JsonObject) {
 
     }
 
-    fun getUserSessionListResponse(callback: PresenterCallback<SessionListModel>) {
-        ApiClient.retroClientCache.create(SessionApi::class.java).getSessionListResponse()
+    fun getUserSessionListResponse(callback: PresenterCallback<SessionListModel>): Disposable {
+        return ApiClient.retroClientCache.create(SessionApi::class.java).getSessionListResponse()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(

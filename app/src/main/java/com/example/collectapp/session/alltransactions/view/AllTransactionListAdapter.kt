@@ -14,21 +14,12 @@ class AllTransactionListAdapter() : BaseRecyclerAdapter<AllTransactionModel>(R.l
         val response = list[position]
         holder.itemView.payerName.text = response.payerName
         holder.itemView.paidOn.text = response.paidOn
-        holder.itemView.amount.text = renderMoney(response.amount.toDouble())
+        holder.itemView.amount.text = DataFormatter.getInstance().renderMoney(response.amount.toDouble())
 //        holder.itemView.collectedById.text = response.collectedById.toString()
         holder.itemView.recievedByText.text = response.collectedBy
         holder.itemView.groupNameText.text = response.groupName
         holder.itemView.callText.text = response.payerPhoneNumber.toString()
     }
 
-    private val currencyFormatter = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
-
-    fun renderMoney(value: Double): String {
-        return try {
-            currencyFormatter.format(value)
-        } catch (ex: IllegalArgumentException) {
-            value.toString()
-        }
-    }
 
 }

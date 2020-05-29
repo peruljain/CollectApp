@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.collectapp.R
+import com.example.collectapp.base.BaseActivity
 import com.example.collectapp.base.BaseListFragment
 import com.example.collectapp.helper.Constants
 import com.example.collectapp.helper.SharedPref
@@ -22,6 +23,9 @@ import timber.log.Timber
 class SessionListView :
     BaseListFragment<SessionListModel, SessionDataModel, SessionListAdapter>() {
 
+    companion object {
+        const val TAG = "SessionListView"
+    }
 
     lateinit var createSessionFragment: SessionCreateView
     lateinit var joinSessionFragment: SessionJoinView
@@ -39,32 +43,35 @@ class SessionListView :
     override fun initView() {
         createSessionFragment = SessionCreateView()
         joinSessionFragment = SessionJoinView()
-        // getList
+
         getList()
 
         requireActivity().sessionNewFAB.setOnClickListener {
             SessionNewHostDialogFragment().show(parentFragmentManager, SessionCreateView.TAG)
         }
 
+        (activity as BaseActivity).swipeRefreshLayout?.setOnRefreshListener {
+            (activity as BaseActivity).swipeRefreshLayout?.isRefreshing = false
+            getList()
+        }
 
         adapter.listener = { v, it ->
             val intent = Intent(this.context, SessionActivity::class.java)
-            intent.putExtra(Constants.session_ID, it.sessionId)
+            intent.putExtra(Constants.SESSION_ID, it.sessionId)
+            intent.putExtra(Constants.SESSION_NAME, it.sessionName)
             Timber.d("sessionID = ${it.sessionId}")
             startActivity(intent)
-            show("Clicked: ${it.sessionId}")
         }
     }
 
     override fun loadResponse(responseModel: SessionListModel) {
         print(responseModel)
-//        adapter.list = responseModel.data
-        adapter.list = List(10){responseModel.data[0]}
+        adapter.list = responseModel.data
         adapter.notifyDataSetChanged()
     }
 
     private fun getList() {
-        val header = SharedPref.getString(Constants.authorization)
+        val header = SharedPref.getString(Constants.AUTHORIZATION)
         presenter = SessionListPresenter(this, SessionListProvider(header!!, JsonObject()))
         presenter.getSessionListResponse()
     }

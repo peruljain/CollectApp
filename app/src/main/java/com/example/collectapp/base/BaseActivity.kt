@@ -52,8 +52,8 @@ abstract class BaseActivity(val layoutId: Int) : AppCompatActivity() {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             cm.activeNetwork != null
         } else {
-            show("Your device version is not compatible");
-            return false;
+            show("Your device version is not compatible")
+            return false
         }  //can also be null in airplane mode
     }
 }

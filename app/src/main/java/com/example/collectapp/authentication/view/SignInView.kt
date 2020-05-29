@@ -51,8 +51,8 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
         if (success) {
             // move to activity
             this.showLong(responseModel.access_token)
-            SharedPref.putString(Constants.authorization, responseModel.access_token)
-            SharedPref.putString(Constants.phoneNumber, phoneNumber.text.toString())
+            SharedPref.putString(Constants.AUTHORIZATION, responseModel.access_token)
+            SharedPref.putString(Constants.PHONE_NUMBER, phoneNumber.text.toString())
             val intent = Intent(this.context, HomeActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
@@ -82,6 +82,9 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
             signInPresenter.getSignInResponse()
         }
     }
-
+    override fun onDestroyView() {
+        signInPresenter.onCleared()
+        super.onDestroyView()
+    }
 
 }

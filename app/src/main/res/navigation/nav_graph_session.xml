@@ -8,31 +8,43 @@
     <fragment
         android:id="@+id/sessionViewFragment"
         android:name="com.example.collectapp.session.SessionViewFragment"
-        android:label="fragment_session_view"
         tools:layout="@layout/fragment_session_view" >
         <action
             android:id="@+id/action_sessionViewFragment_to_membersListView"
-            app:destination="@id/membersListView" />
+            app:destination="@id/membersListView"
+            app:enterAnim="@anim/enter_from_left"
+            app:exitAnim="@anim/exit_from_left"
+            app:popEnterAnim="@anim/enter_from_right"
+            app:popExitAnim="@anim/exit_from_right"
+            />
         <action
             android:id="@+id/action_sessionViewFragment_to_transactionListView"
-            app:destination="@id/transactionListView" />
+            app:destination="@id/transactionListView"
+            app:enterAnim="@anim/enter_from_left"
+            app:exitAnim="@anim/exit_from_left"
+            app:popEnterAnim="@anim/enter_from_right"
+            app:popExitAnim="@anim/exit_from_right"/>
         <action
             android:id="@+id/action_sessionViewFragment_to_allTransactionsListView"
-            app:destination="@id/allTransactionsListView" />
+            app:destination="@id/allTransactionsListView"
+            app:enterAnim="@anim/enter_from_left"
+            app:exitAnim="@anim/exit_from_left"
+            app:popEnterAnim="@anim/enter_from_right"
+            app:popExitAnim="@anim/exit_from_right"/>
     </fragment>
     <fragment
         android:id="@+id/membersListView"
         android:name="com.example.collectapp.session.members.view.MembersListView"
-        android:label="fragment_member_list"
+        android:label="Members"
         tools:layout="@layout/fragment_member_list" />
     <fragment
         android:id="@+id/transactionListView"
         android:name="com.example.collectapp.session.transactiongroup.view.TransactionListView"
-        android:label="fragment_group_transaction_list"
+        android:label="Groups"
         tools:layout="@layout/fragment_group_transaction_list" />
     <fragment
         android:id="@+id/allTransactionsListView"
         android:name="com.example.collectapp.session.alltransactions.view.AllTransactionsListView"
-        android:label="fragment_all_transaction_list"
+        android:label="All Transactions"
         tools:layout="@layout/fragment_all_transaction_list" />
 </navigation>

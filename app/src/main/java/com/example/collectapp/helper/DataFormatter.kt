@@ -18,13 +18,22 @@ import kotlin.math.absoluteValue
 
 class DataFormatter constructor(private val context: Context) {
 
+    companion object {
+        private const val TAG = "DataFormatter"
+
+        private var _instance: DataFormatter? = null
+        fun createInstance(context: Context) {
+            if (_instance == null) {
+                _instance = DataFormatter(context)
+            }
+        }
+        fun getInstance() = _instance!!
+    }
+
     init {
         JodaTimeAndroid.init(context)
     }
 
-    companion object {
-        private const val TAG = "DataFormatter"
-    }
 
     private val currencyFormatter = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
 

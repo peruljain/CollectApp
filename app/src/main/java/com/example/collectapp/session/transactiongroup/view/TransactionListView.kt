@@ -31,17 +31,19 @@ class TransactionListView : BaseListFragment<TransactionListModel, TransactionGr
     }
     override fun initView() {
         // getList
+        presenter = TransactionListPresenter(this, TransactionGroupProvider())
         createTransactionGroupFragment = TransactionGroupCreateView()
         createTransactionGroup.setOnClickListener { createTransactionGroupFragment.show(parentFragmentManager,
-            requireArguments().getLong(Constants.session_ID).toString()) }
+            requireArguments().getLong(Constants.SESSION_ID).toString()) }
         getList()
     }
 
     private fun getList() {
-        val jsonObject = JsonObject()
-        jsonObject.addProperty(Constants.session_ID,requireArguments().getLong(Constants.session_ID))
-        presenter = TransactionListPresenter(this, TransactionGroupProvider(jsonObject))
-        presenter.getTransactionGroupListResponse()
+        presenter.getTransactionGroupListResponse(requireArguments().getLong(Constants.SESSION_ID))
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.onCleared()
+    }
 }

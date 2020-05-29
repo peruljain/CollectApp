@@ -25,7 +25,7 @@ class AuthActivity : BaseActivity(R.layout.activity_auth) {
         progressBar = progressBarMain
         swipeRefreshLayout = swipeRefreshLayoutMain
         navController = findNavController(R.id.fragmentHostMain)
-        val accessToken:String? = SharedPref.getString(Constants.authorization)
+        val accessToken:String? = SharedPref.getString(Constants.AUTHORIZATION)
 
         accessToken?.let{
             val intent = Intent(this, HomeActivity::class.java)

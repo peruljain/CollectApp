@@ -1,6 +1,7 @@
 package com.example.collectapp.home.view
 
 import android.widget.Button
+import androidx.fragment.app.DialogFragment
 import com.example.collectapp.R
 import com.example.collectapp.base.BaseFragment
 import com.example.collectapp.helper.Constants
@@ -26,17 +27,16 @@ class SessionCreateView :  BaseFragment<SessionCreateModel>() {
     override fun loadResponse(responseModel: SessionCreateModel) {
 
         if (responseModel.success) {
-            val sessionId = responseModel.data.sessionId
-            val sessionToken = responseModel.data.sessionToken
-            SharedPref.putLong(Constants.session_ID,sessionId)
-            SharedPref.putString(Constants.session_Token,sessionToken!!)
             this.show(responseModel.message)
+            (parentFragment as SessionNewHostDialogFragment).run{
+//                refreshList()
+                dismiss()
+            }
         }
         else {
             this.show(responseModel.message)
         }
-        // To dismiss the fragment
-//        dismiss()
+
     }
 
     override fun initView() {
@@ -47,8 +47,8 @@ class SessionCreateView :  BaseFragment<SessionCreateModel>() {
 
     private fun submitClick() {
         val jsonObject = JsonObject()
-        jsonObject.addProperty("sessionName", sessionNameCreate.sessionNameCreateText.toString())
-        val header = SharedPref.getString(Constants.authorization)
+        jsonObject.addProperty("sessionName", sessionNameCreate.sessionNameCreateText.text.toString())
+        val header = SharedPref.getString(Constants.AUTHORIZATION)
         presenter = SessionCreatePresenter(this, SessionListProvider(header!!, jsonObject))
         presenter.getSessionCreateResponse()
     }

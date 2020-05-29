@@ -5,15 +5,16 @@ import com.example.collectapp.helper.PresenterCallback
 import com.example.collectapp.session.members.provider.model.MembersListModel
 import com.google.gson.JsonObject
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
 
-class SessionMemberProvider (var sessionId: Long){
+class SessionMemberProvider (){
 
-     fun getUserMembersListResponse(callback: PresenterCallback<MembersListModel>) {
 
-        ApiClient.retroClientCache.create(SessionMemberApi::class.java)
+    fun getUserMembersListResponse(sessionId:Long,callback: PresenterCallback<MembersListModel>): Disposable {
+         return ApiClient.retroClientCache.create(SessionMemberApi::class.java)
             .getMemberList(sessionId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -24,8 +25,7 @@ class SessionMemberProvider (var sessionId: Long){
                 },
                 onError = { callback.onFailure(it.message?:"Some Error Occurred") }
             )
-
-
     }
+
 
 }

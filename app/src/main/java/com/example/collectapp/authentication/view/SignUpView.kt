@@ -25,7 +25,7 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
 
 
     override fun loadResponse(responseModel: AuthenticationModel) {
-        // response model;
+        // response model
         var success = responseModel.success
 
         if (success) {
@@ -64,5 +64,9 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
             signUpPresenter = AuthenticationSignUpPresenter(this, AuthenticationProvider(jsonObject))
             signUpPresenter.getSignUpResponse()
         }
+    }
+    override fun onDestroyView() {
+        signUpPresenter.onCleared()
+        super.onDestroyView()
     }
 }

@@ -29,8 +29,8 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>() {
         if (success) {
             // TODO: move to new activity
             this.show(responseModel.message)
-            SharedPref.putString(Constants.phoneNumber, arguments?.getString("phone")!!)
-            SharedPref.putString(Constants.authorization, responseModel.access_token)
+            SharedPref.putString(Constants.PHONE_NUMBER, arguments?.getString("phone")!!)
+            SharedPref.putString(Constants.AUTHORIZATION, responseModel.access_token)
             val intent = Intent(this.context, HomeActivity::class.java)
             startActivity(intent)
             activity!!.finish()
@@ -52,7 +52,7 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>() {
     private fun click() {
 
         if (!this.check(phone?.text.toString()) || !this.check(otp?.text.toString()) || !this.check(userPassword?.text.toString())) {
-            this.show("Please Enter Correct Details");
+            this.show("Please Enter Correct Details")
         }
         else {
             var jsonObject = JsonObject()
@@ -63,5 +63,9 @@ class ResetPasswordView : BaseFragment<AuthenticationModel>() {
                 AuthenticationResetPasswordPresenter(this, AuthenticationProvider(jsonObject))
             presenter.getResetPasswordResponse()
         }
+    }
+    override fun onDestroyView() {
+        presenter.onCleared()
+        super.onDestroyView()
     }
 }
