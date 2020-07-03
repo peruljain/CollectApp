@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: me.fahmisdk6.avatarview:avatarview:1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/46ab425f50de934f50c5258f02ab155c/avatarview-1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/46ab425f50de934f50c5258f02ab155c/avatarview-1.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.fahmisdk6.avatarview/avatarview/1.0/e653b9db38512675b0673bff624c5890a9ab9cc5/avatarview-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -27,6 +27,7 @@ class DataFormatter constructor(private val context: Context) {
                 _instance = DataFormatter(context)
             }
         }
+
         fun getInstance() = _instance!!
     }
 
@@ -91,7 +92,7 @@ class DataFormatter constructor(private val context: Context) {
 
     fun getDisplayTime(milliseconds: Long): String? {
         val dateTimeFormatter: DateTimeFormatter = DateTimeFormat.forPattern("hh:mm a")
-        return dateTimeFormatter.print(milliseconds * 1000)
+        return dateTimeFormatter.print(milliseconds)
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -235,6 +236,22 @@ class DataFormatter constructor(private val context: Context) {
 
     fun formatDecimalPlaces(d: Double): String {
         return String.format("%.2f", d)
+    }
+
+    fun getDisplayDayOfWeek(milliseconds: Long): String? {
+        val dateTimeFormatter: DateTimeFormatter = DateTimeFormat.forPattern("EEEE")
+        return dateTimeFormatter.print(milliseconds * 1000)
+    }
+
+    fun getDurationBasedFormattedDate(dateInMillis: Long): String {
+        val time = getDisplayTime(dateInMillis)!!
+        val smsTime = Calendar.getInstance().apply { timeInMillis = dateInMillis }
+        val now = Calendar.getInstance()
+        val prefix = if (now[Calendar.DATE] - smsTime[Calendar.DATE] <= 1) ""
+        else if (now[Calendar.WEEK_OF_YEAR] == smsTime[Calendar.WEEK_OF_YEAR])
+            getDisplayDayOfWeek(dateInMillis)!!
+        else getDisplayDateMonthYear(dateInMillis)!!
+        return "$prefix $time"
     }
 
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardContainer"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:gravity="start"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.example.collectapp.helper.AvatarImageView
+        android:id="@+id/avatarImage"
+        app:avTextSize="7sp"
+        app:avCornerRadius="50dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="2dp"
+        android:src="@drawable/logo"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardChildLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/message_theirs_background"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/personNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/ebrima"
+            android:text="@string/sample_name"
+            android:textColor="@color/primaryDarkColor"
+            app:layout_constraintBottom_toTopOf="@+id/messageTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ebrima"
+            android:text="@string/sample_duration"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/messageTextView"
+            app:layout_constraintTop_toBottomOf="@+id/messageTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/messageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ebrima"
+            android:textSize="16sp"
+            android:textColor="@color/md_black_1000"
+            android:text="@string/sample_desc"
+            app:layout_constraintBottom_toTopOf="@+id/dateTextView"
+            app:layout_constraintStart_toStartOf="@+id/personNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/personNameTextView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -7,13 +7,14 @@
     android:background="@color/backgroundColor"
     tools:context=".dashboard.DashboardView">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.example.collectapp.helper.AvatarImageView
         android:id="@+id/userImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/logo"
+        app:avCornerRadius="50dp"
+        app:avTextSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

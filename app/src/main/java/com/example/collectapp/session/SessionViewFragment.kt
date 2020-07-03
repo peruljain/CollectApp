@@ -21,9 +21,14 @@ class SessionViewFragment : BaseFragment<GeneralModel>() {
 
     }
 
+    var sessionId: Long = 0
+    lateinit var sessionName: String
+
     override fun initView() {
-        navController = requireView().findNavController()
-        activity?.title =  activity?.intent?.getStringExtra(Constants.SESSION_NAME)?:"Session Detail"
+        sessionId = activity?.intent?.getLongExtra(Constants.SESSION_ID, 0) ?: 0
+        sessionName = activity?.intent?.getStringExtra(Constants.SESSION_NAME) ?: "Session Detail"
+        navController =
+            requireView().findNavController().apply { currentDestination?.label = sessionName }
         configureTokenView()
         configureListeners()
     }
@@ -50,9 +55,9 @@ class SessionViewFragment : BaseFragment<GeneralModel>() {
 
 
     private fun configureListeners() {
-        val sessionId = activity?.intent?.getLongExtra(Constants.SESSION_ID, 0) ?: 0
         val bundle = Bundle()
         bundle.putLong(Constants.SESSION_ID, sessionId)
+        bundle.putString(Constants.SESSION_NAME, sessionName)
         sessionMembersCard.setOnClickListener {
             navController!!.navigate(
                 R.id.action_sessionViewFragment_to_membersListView,
@@ -68,6 +73,13 @@ class SessionViewFragment : BaseFragment<GeneralModel>() {
         sessionTransactionCard.setOnClickListener {
             navController!!.navigate(
                 R.id.action_sessionViewFragment_to_allTransactionsListView,
+                bundle
+            )
+        }
+
+        sessionChatCard.setOnClickListener {
+            navController!!.navigate(
+                R.id.action_sessionViewFragment_to_chatView,
                 bundle
             )
         }

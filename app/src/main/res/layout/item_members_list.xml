@@ -7,14 +7,15 @@
     android:layout_height="wrap_content"
     android:background="@drawable/white_bg">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.example.collectapp.helper.AvatarImageView
         android:id="@+id/userImageView"
         android:layout_width="84dp"
         android:layout_height="84dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/logo"
+        app:avCornerRadius="50dp"
+        app:avTextSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

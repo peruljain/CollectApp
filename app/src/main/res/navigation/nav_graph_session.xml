@@ -6,6 +6,7 @@
     app:startDestination="@id/sessionViewFragment">
 
     <fragment
+        android:label="Session Detail"
         android:id="@+id/sessionViewFragment"
         android:name="com.example.collectapp.session.SessionViewFragment"
         tools:layout="@layout/fragment_session_view" >
@@ -31,6 +32,13 @@
             app:exitAnim="@anim/exit_from_left"
             app:popEnterAnim="@anim/enter_from_right"
             app:popExitAnim="@anim/exit_from_right"/>
+        <action
+            android:id="@+id/action_sessionViewFragment_to_chatView"
+            app:destination="@id/chatView"
+            app:enterAnim="@anim/enter_from_left"
+            app:exitAnim="@anim/exit_from_left"
+            app:popEnterAnim="@anim/enter_from_right"
+            app:popExitAnim="@anim/exit_from_right"/>
     </fragment>
     <fragment
         android:id="@+id/membersListView"
@@ -47,4 +55,8 @@
         android:name="com.example.collectapp.session.alltransactions.view.AllTransactionsListView"
         android:label="All Transactions"
         tools:layout="@layout/fragment_all_transaction_list" />
+    <fragment
+        android:id="@+id/chatView"
+        android:name="com.example.collectapp.session.chat.view.ChatView"
+        android:label="Chat" />
 </navigation>

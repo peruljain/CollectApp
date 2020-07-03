@@ -13,5 +13,6 @@ class MembersListAdapter() : BaseRecyclerAdapter<MemberDataModel>(R.layout.item_
         val joinedOn = "joined ${response.joinedOn}"
         holder.itemView.memberPhoneNumber.text = phoneNumber
         holder.itemView.memberJoinedDate.text = joinedOn
+        holder.itemView.userImageView.bind(response.userName,"")
     }
 }
