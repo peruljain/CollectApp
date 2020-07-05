@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_sign_up.view.*
 class SignUpView : BaseFragment<AuthenticationModel>() {
 
     override val layoutId: Int = R.layout.fragment_sign_up
-    private lateinit var signUpPresenter : AuthenticationSignUpPresenter
+    var signUpPresenter : AuthenticationSignUpPresenter? = null
 
     lateinit var user_name : EditText
     lateinit var user_password : EditText
@@ -62,11 +62,11 @@ class SignUpView : BaseFragment<AuthenticationModel>() {
             jsonObject.addProperty("name", user_name.text.toString())
             jsonObject.addProperty("password", user_password.text.toString())
             signUpPresenter = AuthenticationSignUpPresenter(this, AuthenticationProvider(jsonObject))
-            signUpPresenter.getSignUpResponse()
+            signUpPresenter?.getSignUpResponse()
         }
     }
     override fun onDestroyView() {
-        signUpPresenter.onCleared()
+        signUpPresenter?.onCleared()
         super.onDestroyView()
     }
 }

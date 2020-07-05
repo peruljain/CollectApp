@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_forgot_password.view.*
 
 class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
     override val layoutId: Int = R.layout.fragment_forgot_password
-    lateinit var presenter : AuthenticationForgotPasswordPresenter
+    var presenter : AuthenticationForgotPasswordPresenter? = null
     lateinit var phoneNumber : EditText
     lateinit var submitButton : Button
 
@@ -49,11 +49,11 @@ class ForgotPasswordView() : BaseFragment<AuthenticationModel>() {
         var jsonObject = JsonObject()
         jsonObject.addProperty("phone",phone)
         presenter = AuthenticationForgotPasswordPresenter(this, AuthenticationProvider(jsonObject))
-        presenter.getForgotPasswordResponse()
+        presenter?.getForgotPasswordResponse()
         }
     }
     override fun onDestroyView() {
-        presenter.onCleared()
+        presenter?.onCleared()
         super.onDestroyView()
     }
 }

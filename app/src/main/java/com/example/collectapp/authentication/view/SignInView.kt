@@ -25,7 +25,7 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
     var userLoginPassword : String? = null
     lateinit var  phoneNumber : TextInputEditText
     lateinit var password : TextInputEditText
-    lateinit var signInPresenter : AuthenticationSignInPresenter
+    var signInPresenter : AuthenticationSignInPresenter? = null
 
     override fun initView() {
         phoneNumber  = userPhoneNumber.userPhoneNumberText
@@ -79,11 +79,11 @@ class SignInView() : BaseFragment<AuthenticationModel>() {
             jsonObject.addProperty("phone", userContactNumber)
             jsonObject.addProperty("password", userLoginPassword)
             signInPresenter = AuthenticationSignInPresenter(this, AuthenticationProvider(jsonObject))
-            signInPresenter.getSignInResponse()
+            signInPresenter?.getSignInResponse()
         }
     }
     override fun onDestroyView() {
-        signInPresenter.onCleared()
+        signInPresenter?.onCleared()
         super.onDestroyView()
     }
 

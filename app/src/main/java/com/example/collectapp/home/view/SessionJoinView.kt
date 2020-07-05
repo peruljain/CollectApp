@@ -25,7 +25,7 @@ class SessionJoinView : BaseFragment<GeneralModel>() {
     lateinit var sessionToken : EditText
     lateinit var submit : Button
     lateinit var cancel : Button
-    lateinit var presenter : SessionJoinPresenter
+    var presenter : SessionJoinPresenter? = null
 
     override fun loadResponse(responseModel: GeneralModel) {
 
@@ -59,11 +59,11 @@ class SessionJoinView : BaseFragment<GeneralModel>() {
         jsonObject.addProperty(Constants.SESSION_ID,SharedPref.getLong(Constants.SESSION_ID))
         val header = SharedPref.getString(Constants.AUTHORIZATION)
         presenter = SessionJoinPresenter(this, SessionListProvider(header!!, jsonObject))
-        presenter.getJoinReponse()
+        presenter?.getJoinReponse()
     }
 
     override fun onDestroyView() {
-        presenter.onCleared()
+        presenter?.onCleared()
         super.onDestroyView()
     }
 }

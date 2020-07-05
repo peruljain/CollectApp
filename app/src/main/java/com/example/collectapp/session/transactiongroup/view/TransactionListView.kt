@@ -10,8 +10,8 @@ import com.example.collectapp.session.transactiongroup.presenter.TransactionList
 import com.example.collectapp.session.transactiongroup.provider.TransactionGroupProvider
 import com.example.collectapp.session.transactiongroup.provider.model.TransactionGroupModel
 import com.example.collectapp.session.transactiongroup.provider.model.TransactionListModel
-import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_group_transaction_list.*
+
 
 class TransactionListView : BaseListFragment<TransactionListModel, TransactionGroupModel,
         TransactionListAdapter>(){
@@ -21,7 +21,6 @@ class TransactionListView : BaseListFragment<TransactionListModel, TransactionGr
     lateinit var presenter: TransactionListPresenter
     lateinit var createTransactionGroupFragment: TransactionGroupCreateView
     override fun loadResponse(responseModel: TransactionListModel) {
-        print(responseModel)
         adapter.list = responseModel.data
         adapter.notifyDataSetChanged()
     }
@@ -33,8 +32,12 @@ class TransactionListView : BaseListFragment<TransactionListModel, TransactionGr
         // getList
         presenter = TransactionListPresenter(this, TransactionGroupProvider())
         createTransactionGroupFragment = TransactionGroupCreateView()
-        createTransactionGroup.setOnClickListener { createTransactionGroupFragment.show(parentFragmentManager,
-            requireArguments().getLong(Constants.SESSION_ID).toString()) }
+        createTransactionGroup.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putLong(Constants.SESSION_ID, requireArguments().getLong(Constants.SESSION_ID))
+            createTransactionGroupFragment.arguments = bundle
+            createTransactionGroupFragment.show(parentFragmentManager, "Fragment")
+        }
         getList()
     }
 
@@ -43,7 +46,7 @@ class TransactionListView : BaseListFragment<TransactionListModel, TransactionGr
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         presenter.onCleared()
+        super.onDestroyView()
     }
 }

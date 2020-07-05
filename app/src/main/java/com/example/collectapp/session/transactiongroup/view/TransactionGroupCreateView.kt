@@ -1,5 +1,7 @@
 package com.example.collectapp.session.transactiongroup.view
 
+import android.util.Log
+import androidx.core.os.bundleOf
 import com.example.collectapp.R
 import com.example.collectapp.base.BaseDialogFragment
 import com.example.collectapp.helper.Constants
@@ -26,6 +28,7 @@ class TransactionGroupCreateView : BaseDialogFragment<TransactionCreateModel>() 
     }
 
     override fun initView() {
+
         presenter = TransactionGroupCreatePresenter(this)
         submitTransactionGroupCreateBtn.setOnClickListener {
             submitClick()
@@ -38,7 +41,8 @@ class TransactionGroupCreateView : BaseDialogFragment<TransactionCreateModel>() 
     private fun submitClick() {
         val jsonObject = JsonObject()
         jsonObject.addProperty("groupName", transactionGroupNameCreate.transactionGroupNameCreateText.toString())
-        jsonObject.addProperty("sessionId", requireArguments().getLong(Constants.SESSION_ID))
+        var sessionId = arguments?.getLong(Constants.SESSION_ID)
+        jsonObject.addProperty("sessionId", sessionId)
         presenter.getTransactionGroupCreateResponse(jsonObject)
     }
 
